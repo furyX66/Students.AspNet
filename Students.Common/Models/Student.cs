@@ -35,7 +35,7 @@ public class Student
     }
 
     public void AddSubject(Subject subject)
-    { 
+    {
         var studentSubject = new StudentSubject
         {
             Student = this,

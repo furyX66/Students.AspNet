@@ -1,9 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Students.Common.Data;
-using Students.Common.Models;
 using Students.Interfaces;
-using Students.Services;
 
 namespace Students.Web.Controllers;
 
@@ -17,8 +14,8 @@ public class StudentsController : Controller
     private readonly IDatabaseService _databaseService;
 
     public StudentsController(
-        StudentsContext context, 
-        ILogger<StudentsController> logger, 
+        StudentsContext context,
+        ILogger<StudentsController> logger,
         ISharedResourcesService sharedResourcesService,
         IDatabaseService databaseService)
     {
@@ -28,7 +25,7 @@ public class StudentsController : Controller
         _databaseService = databaseService;
     }
 
-    #endregion // Ctor And Properties
+    #endregion Ctor And Properties
 
     #region Public Methods
 
@@ -59,11 +56,11 @@ public class StudentsController : Controller
             if (id != null)
             {
                 var student = await _databaseService.StudentDetails(id);
-                    if (student != null)
-                    {
-                        result = View(student);
-                    }
-                }         
+                if (student != null)
+                {
+                    result = View(student);
+                }
+            }
         }
         catch (Exception ex)
         {
@@ -79,7 +76,7 @@ public class StudentsController : Controller
         try
         {
             var newStudent = _databaseService.CreateStudent();
-             result = View(newStudent);
+            result = View(newStudent);
         }
         catch (Exception ex)
         {
@@ -99,12 +96,12 @@ public class StudentsController : Controller
         IActionResult result = View();
         try
         {
-            var student = await _databaseService.CreateStudent(id, name, age, major, subjectIdDst);   
-            if (!student) 
+            var student = await _databaseService.CreateStudent(id, name, age, major, subjectIdDst);
+            if (!student)
             {
                 throw new Exception("An error occured during saving data");
             }
-            result = RedirectToAction(nameof(Index)); 
+            result = RedirectToAction(nameof(Index));
         }
         catch (Exception ex)
         {
@@ -122,7 +119,7 @@ public class StudentsController : Controller
 
         try
         {
-            var student =await _databaseService.EditStudent(id);  
+            var student = await _databaseService.EditStudent(id);
             result = View(student);
         }
         catch (Exception ex)
@@ -164,7 +161,6 @@ public class StudentsController : Controller
         return result;
     }
 
-
     // GET: Students/Delete/5
     public async Task<IActionResult> Delete(int? id)
     {
@@ -177,7 +173,6 @@ public class StudentsController : Controller
             }
             else
             {
-
                 var student = await _databaseService.DisplayStudent(id);
                 if (student == null)
                 {
@@ -217,7 +212,7 @@ public class StudentsController : Controller
         return result;
     }
 
-    #endregion // Public Methods
+    #endregion Public Methods
 
     #region Private Methods
 
@@ -227,5 +222,5 @@ public class StudentsController : Controller
         return result;
     }
 
-    #endregion // Private Methods
+    #endregion Private Methods
 }

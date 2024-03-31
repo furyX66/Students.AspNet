@@ -1,7 +1,7 @@
-﻿using System.Globalization;
-using System.Resources;
-using Students.Interfaces;
+﻿using Students.Interfaces;
 using Students.Resources;
+using System.Globalization;
+using System.Resources;
 
 namespace Students.Services;
 
@@ -13,7 +13,7 @@ public class SharedResourcesService : ISharedResourcesService
     {
     }
 
-    #endregion // Properties And Ctor
+    #endregion Properties And Ctor
 
     #region ISharedResourceService Implementation
 
@@ -43,7 +43,7 @@ public class SharedResourcesService : ISharedResourcesService
             {
                 resourceManager = new ResourceManager("Students.Resources.ResourcesEnglish", typeof(ResourcesEnglish).Assembly);
             }
-            else if (string.Equals(cultureInfo.Name, "de-DE")) 
+            else if (string.Equals(cultureInfo.Name, "de-DE"))
             {
                 resourceManager = new ResourceManager("Students.Resources.ResourcesGerman", typeof(ResourcesGerman).Assembly);
             }
@@ -91,5 +91,5 @@ public class SharedResourcesService : ISharedResourcesService
         }
     }
 
-    #endregion // ISharedResourceService Implementation
+    #endregion ISharedResourceService Implementation
 }

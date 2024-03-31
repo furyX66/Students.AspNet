@@ -5,7 +5,7 @@ namespace Students.Common.Data;
 
 public class StudentsContext : DbContext
 {
-    public StudentsContext (DbContextOptions<StudentsContext> options)
+    public StudentsContext(DbContextOptions<StudentsContext> options)
         : base(options)
     {
     }
@@ -13,7 +13,6 @@ public class StudentsContext : DbContext
     public DbSet<Student> Student { get; set; } = default!;
     public DbSet<Subject> Subject { get; set; } = default!;
     public DbSet<StudentSubject> StudentSubject { get; set; } = default!;
-
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

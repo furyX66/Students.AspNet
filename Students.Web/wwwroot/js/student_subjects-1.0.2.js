@@ -1,5 +1,4 @@
-﻿
-function moveRight() {
+﻿function moveRight() {
     var availableSubjects = document.getElementById('availableSubjects');
     var chosenSubjects = document.getElementById('chosenSubjects');
 

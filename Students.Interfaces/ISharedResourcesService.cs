@@ -22,7 +22,6 @@ namespace Students.Interfaces
         /// <returns>The resource string.</returns>
         string GetString(string resourceId, CultureInfo cultureInfo);
 
-
         /// <summary>
         /// Indexer to get the resource string associated with the specified resource id.
         /// </summary>
@@ -30,5 +29,4 @@ namespace Students.Interfaces
         /// <returns>The resource string.</returns>
         string this[string resourceId] { get; }
     }
-
 }

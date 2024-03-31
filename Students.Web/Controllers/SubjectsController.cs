@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Students.Common.Data;
 using Students.Common.Models;
 using Students.Interfaces;
-using Students.Services;
 
 namespace Students.Web.Controllers;
 
@@ -75,7 +69,7 @@ public class SubjectsController : Controller
             return NotFound();
         }
 
-        var subject = await _databaseService.EditSubject(id);   
+        var subject = await _databaseService.EditSubject(id);
         if (subject == null)
         {
             return NotFound();

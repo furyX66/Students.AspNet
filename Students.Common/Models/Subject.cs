@@ -5,7 +5,6 @@ namespace Students.Common.Models;
 
 public class Subject
 {
-
     public int Id { get; set; }
 
     [Required]
