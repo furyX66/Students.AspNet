@@ -129,6 +129,9 @@
   <data name="BackToList" xml:space="preserve">
     <value>Back to List</value>
   </data>
+  <data name="Books" xml:space="preserve">
+    <value>Books</value>
+  </data>
   <data name="BuildingApp" xml:space="preserve">
     <value>building Web apps with ASP.NET Core</value>
   </data>
@@ -206,6 +209,9 @@
   </data>
   <data name="Save" xml:space="preserve">
     <value>Save</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value />
   </data>
   <data name="StudentName" xml:space="preserve">
     <value>Name and surname</value>

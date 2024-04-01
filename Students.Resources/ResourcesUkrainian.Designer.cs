@@ -97,6 +97,15 @@ namespace Students.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Книги.
+        /// </summary>
+        public static string Books {
+            get {
+                return ResourceManager.GetString("Books", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Побудова веб-додатків за допомогою ASP.NET Core.
         /// </summary>
         public static string BuildingApp {

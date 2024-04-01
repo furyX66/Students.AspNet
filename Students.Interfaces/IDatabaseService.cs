@@ -45,4 +45,11 @@ public interface IDatabaseService
     bool CheckFieldOfStudiesExist(int? id);
     Task<List<Student>> IndexStudent();
     Task<List<Subject>> IndexSubject();
+    Task<List<Book>> IndexBook();
+    Task<Book> CreateBook(Book book);
+    Task<Book> EditBook(int? id);
+    Task<Book> EditBook(int id, Book book);
+    Task<Book> DeleteBook(int? id);
+    Task<bool> BookDeleteConfirm(int? id);
+    bool CheckBookExist(int? id);
 }

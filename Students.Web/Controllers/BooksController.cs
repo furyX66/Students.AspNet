@@ -6,65 +6,52 @@ using Students.Interfaces;
 
 namespace Students.Web.Controllers
 {
-    public class FieldsOfStudiesController : Controller
+    public class BooksController : Controller
     {
-        private readonly ILogger _logger;
         private readonly IDatabaseService _databaseService;
 
-        public FieldsOfStudiesController(ILogger<FieldsOfStudiesController> looger, IDatabaseService databaseService)
+        public BooksController(IDatabaseService databaseService)
         {
-            _logger = looger;
             _databaseService = databaseService;
         }
-
-        // GET: FieldsOfStudies
+        // GET: Books
         public async Task<IActionResult> Index()
         {
             IActionResult result = View();
-            var model = await _databaseService.IndexFieldOfStudy();
+            var model = await _databaseService.IndexBook();
             result = View(model);
             return result;
         }
 
-        // GET: FieldsOfStudies/Details/5
+        // GET: Books/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var fieldOfStudies = await _databaseService.FieldOfStudiestDetails(id);
-            if (fieldOfStudies == null)
-            {
-                return NotFound();
-            }
-
-            return View(fieldOfStudies);
+            var book = await _databaseService.IndexBook();
+            return View(book);
         }
 
-        // GET: FieldsOfStudies/Create
+        // GET: Books/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: FieldsOfStudies/Create
+        // POST: Books/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name")] FieldOfStudies fieldOfStudy)
+        public async Task<IActionResult> Create([Bind("Id,Title,Author,Description")] Book book)
         {
             if (ModelState.IsValid)
             {
-                fieldOfStudy = await _databaseService.CreateFieldOfStudies(fieldOfStudy);
+                book = await _databaseService.CreateBook(book);
                 return RedirectToAction(nameof(Index));
             }
-            return View(fieldOfStudy);
+            return View(book);
         }
 
-        // GET: FieldsOfStudies/Edit/5
+        // GET: Books/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -72,22 +59,22 @@ namespace Students.Web.Controllers
                 return NotFound();
             }
 
-            var fieldOfStudy = await _databaseService.EditFieldOfStudies(id);
-            if (fieldOfStudy == null)
+            var book = await _databaseService.EditBook(id);
+            if (book == null)
             {
                 return NotFound();
             }
-            return View(fieldOfStudy);
+            return View(book);
         }
 
-        // POST: FieldsOfStudies/Edit/5
+        // POST: Books/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] FieldOfStudies fieldOfStudy)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Author,Description")] Book book)
         {
-            if (id != fieldOfStudy.Id)
+            if (id != book.Id)
             {
                 return NotFound();
             }
@@ -96,11 +83,11 @@ namespace Students.Web.Controllers
             {
                 try
                 {
-                    fieldOfStudy = await _databaseService.EditFieldOfStudies(id, fieldOfStudy);
+                    book = await _databaseService.EditBook(id, book);   
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!FieldOfStudyExists(fieldOfStudy.Id))
+                    if (!BookExists(book.Id))
                     {
                         return NotFound();
                     }
@@ -111,27 +98,25 @@ namespace Students.Web.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(fieldOfStudy);
+            return View(book);
         }
 
-        // GET: FieldsOfStudies/Delete/5
+        // GET: Books/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
-
-            var fieldOfStudy = await _databaseService.DeleteFieldOfStudies(id);
-            if (fieldOfStudy == null)
+            var book = await _databaseService.DeleteBook(id);
+            if (book == null)
             {
                 return NotFound();
             }
-
-            return View(fieldOfStudy);
+            return View(book);
         }
 
-        // POST: FieldsOfStudies/Delete/5
+        // POST: Books/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -139,7 +124,7 @@ namespace Students.Web.Controllers
             IActionResult result = View();
             try
             {
-                var fieldOfStudies = await _databaseService.FieldOfStudiesDeleteConfirm(id);
+                var book = await _databaseService.BookDeleteConfirm(id);
                 result = RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
@@ -149,9 +134,9 @@ namespace Students.Web.Controllers
             return result;
         }
 
-        private bool FieldOfStudyExists(int id)
+        private bool BookExists(int id)
         {
-            var result = _databaseService.CheckFieldOfStudiesExist(id);
+            var result = _databaseService.CheckBookExist(id);
             return result;
         }
     }

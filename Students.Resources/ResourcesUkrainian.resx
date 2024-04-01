@@ -129,6 +129,9 @@
   <data name="BackToList" xml:space="preserve">
     <value>Повернутися до списку</value>
   </data>
+  <data name="Books" xml:space="preserve">
+    <value>Книги</value>
+  </data>
   <data name="BuildingApp" xml:space="preserve">
     <value>Побудова веб-додатків за допомогою ASP.NET Core</value>
   </data>

@@ -155,20 +155,10 @@ public class DatabaseService : IDatabaseService
     public async Task<Student> StudentDetails(int? id)
     {
         var student = await _context.Student
-                .FirstOrDefaultAsync(m => m.Id == id);
-        var studentSubjects = _context.StudentSubject
-            .Where(ss => ss.StudentId == id)
-            .Include(ss => ss.Subject)
-            .ToList();
-        student.StudentSubjects = studentSubjects;
-        if (studentSubjects != null)
-        {
-            return student;
-        }
-        else
-        {
-            return null;
-        }
+          .Include(s => s.StudentSubjects)
+              .ThenInclude(ss => ss.Subject)
+          .FirstOrDefaultAsync(m => m.Id == id);
+        return student;
     }
     public Student CreateStudent()
     {
@@ -317,7 +307,51 @@ public class DatabaseService : IDatabaseService
         var result = _context.FieldOfStudies.Any(e => e.Id == id);
         return result;
     }
-
+    public async Task<List<Book>> IndexBook()
+    {
+        var result = await _context.Book.ToListAsync();
+        return result;
+    }
+    public async Task<Book> CreateBook(Book book)
+    {
+        _context.Add(book);
+        await _context.SaveChangesAsync();
+        return book;
+    }
+    public async Task<Book> EditBook(int? id)
+    {
+        var book = await _context.Book.FindAsync(id);
+        return book ?? throw new Exception("An error occured");
+    }
+    public async Task<Book> EditBook(int id, Book book)
+    {
+        _context.Update(book);
+        await _context.SaveChangesAsync();
+        return book;
+    }
+    public async Task<Book> DeleteBook(int? id)
+    {
+        var book = await _context.Book
+            .FirstOrDefaultAsync(m => m.Id == id);
+        return book ?? throw new Exception("An error occured during removing book");
+    }
+    public async Task<bool> BookDeleteConfirm(int? id)
+    {
+        var result = false;
+        var book = await _context.Book.FindAsync(id);
+        if (book != null)
+        {
+            _context.Book.Remove(book);
+        }
+        var resultChecker = await _context.SaveChangesAsync();
+        result = resultChecker > 0;
+        return result;
+    }
+    public bool CheckBookExist(int? id)
+    {
+        var result = _context.Book.Any(e => e.Id == id);
+        return result;
+    }
 }
     #endregion // Public Methods
 
