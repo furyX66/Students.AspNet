@@ -1,19 +1,24 @@
 ﻿@using Students.Interfaces
 @model IEnumerable<FieldOfStudies>
+@using System.Globalization
+
+@inject ISharedResourcesService sharedResourcesService
+
 @{
+    CultureInfo cultureInfo = CultureInfo.GetCultureInfo(Context.Session.GetString("Culture") ?? "en-US");
     ViewData["Title"] = "Index";
 }
 
-<h1>Avaliable Fields of studies</h1>
+<h1>@sharedResourcesService.GetString("AvFieldsOfStudies", cultureInfo)</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">@sharedResourcesService.GetString("CreateNew", cultureInfo)</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                @sharedResourcesService.GetString("Name", cultureInfo)
             </th>
             <th></th>
         </tr>
@@ -27,9 +32,9 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                  <a asp-action="Edit" asp-route-id="@item.Id">@sharedResourcesService.GetString("Edit", cultureInfo)</a> |
+                  <a asp-action="Details" asp-route-id="@item.Id">@sharedResourcesService.GetString("Details", cultureInfo)</a> |
+                  <a asp-action="Delete" asp-route-id="@item.Id">@sharedResourcesService.GetString("Delete", cultureInfo)</a>
             </td>
         </tr>
 }

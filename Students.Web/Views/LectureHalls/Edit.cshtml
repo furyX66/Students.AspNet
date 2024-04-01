@@ -1,12 +1,17 @@
 ﻿@model Students.Common.Models.LectureHall
+@using Students.Interfaces
+@using System.Globalization
+
+@inject ISharedResourcesService sharedResourcesService
 
 @{
+    CultureInfo cultureInfo = CultureInfo.GetCultureInfo(Context.Session.GetString("Culture") ?? "en-US");
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h1>@sharedResourcesService.GetString("Edit", cultureInfo)</h1>
 
-<h4>LectureHall</h4>
+<h4>@sharedResourcesService.GetString("LectureHall", cultureInfo)</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -14,24 +19,24 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <label asp-for="HallNumber" class="control-label"></label>
+                <label asp-for="HallNumber" class="control-label">@sharedResourcesService.GetString("HallNumber", cultureInfo)</label>
                 <input asp-for="HallNumber" class="form-control" />
                 <span asp-validation-for="HallNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Floor" class="control-label"></label>
+                <label asp-for="Floor" class="control-label">@sharedResourcesService.GetString("Floor", cultureInfo)</label>
                 <input asp-for="Floor" class="form-control" />
                 <span asp-validation-for="Floor" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="@sharedResourcesService.GetString("Save", cultureInfo)" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">@sharedResourcesService.GetString("BackToList", cultureInfo)</a>
 </div>
 
 @section Scripts {

@@ -117,118 +117,154 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Age" xml:space="preserve">
+Вот перевод на немецкий язык:
+
+```xml
+<data name="Age" xml:space="preserve">
     <value>Alter</value>
-  </data>
-  <data name="AvailableSubjects" xml:space="preserve">
+</data>
+<data name="Author" xml:space="preserve">
+    <value>Autor</value>
+</data>
+<data name="AvailableSubjects" xml:space="preserve">
     <value>Verfügbare Fächer</value>
-  </data>
-  <data name="AYS" xml:space="preserve">
+</data>
+<data name="AvBooks" xml:space="preserve">
+    <value>Verfügbare Bücher</value>
+</data>
+<data name="AvFieldsOfStudies" xml:space="preserve">
+    <value>Verfügbare Studienfelder</value>
+</data>
+<data name="AvHalls" xml:space="preserve">
+    <value>Verfügbare Säle</value>
+</data>
+<data name="AYS" xml:space="preserve">
     <value>Sind Sie sicher, dass Sie dies löschen möchten?</value>
-  </data>
-  <data name="BackToList" xml:space="preserve">
+</data>
+<data name="BackToList" xml:space="preserve">
     <value>Zurück zur Liste</value>
-  </data>
-  <data name="Books" xml:space="preserve">
+</data>
+<data name="Book" xml:space="preserve">
+    <value>Buch</value>
+</data>
+<data name="Books" xml:space="preserve">
     <value>Bücher</value>
-  </data>
-  <data name="BuildingApp" xml:space="preserve">
-    <value>Erstellen von Web-Apps mit ASP.NET Core</value>
-  </data>
-  <data name="ChoosenSubjects" xml:space="preserve">
+</data>
+<data name="BuildingApp" xml:space="preserve">
+    <value>Erstellen von Webanwendungen mit ASP.NET Core</value>
+</data>
+<data name="ChoosenSubjects" xml:space="preserve">
     <value>Ausgewählte Fächer</value>
-  </data>
-  <data name="Create" xml:space="preserve">
+</data>
+<data name="Create" xml:space="preserve">
     <value>Erstellen</value>
-  </data>
-  <data name="CreateNew" xml:space="preserve">
+</data>
+<data name="CreateNew" xml:space="preserve">
     <value>Neu erstellen</value>
-  </data>
-  <data name="Credits" xml:space="preserve">
-    <value>Guthaben</value>
-  </data>
-  <data name="Data" xml:space="preserve">
+</data>
+<data name="Credits" xml:space="preserve">
+    <value>Credits</value>
+</data>
+<data name="Data" xml:space="preserve">
     <value>Daten</value>
-  </data>
-  <data name="Delete" xml:space="preserve">
+</data>
+<data name="Delete" xml:space="preserve">
     <value>Löschen</value>
-  </data>
-  <data name="Details" xml:space="preserve">
+</data>
+<data name="Description" xml:space="preserve">
+    <value>Beschreibung</value>
+</data>
+<data name="Details" xml:space="preserve">
     <value>Details</value>
-  </data>
-  <data name="Edit" xml:space="preserve">
+</data>
+<data name="Edit" xml:space="preserve">
     <value>Bearbeiten</value>
-  </data>
-  <data name="EN" xml:space="preserve">
+</data>
+<data name="EN" xml:space="preserve">
     <value>Englisch (USA)</value>
-  </data>
-  <data name="FieldsOfStudies" xml:space="preserve">
-    <value>Studienrichtungen</value>
-  </data>
-  <data name="GER" xml:space="preserve">
+</data>
+<data name="FieldOfStudies" xml:space="preserve">
+    <value>Studiengang</value>
+</data>
+<data name="FieldsOfStudies" xml:space="preserve">
+    <value>Studiengänge</value>
+</data>
+<data name="Floor" xml:space="preserve">
+    <value>Etage</value>
+</data>
+<data name="GER" xml:space="preserve">
     <value>Deutsch (Deutschland)</value>
-  </data>
-  <data name="Home" xml:space="preserve">
-    <value>Zuhause</value>
-  </data>
-  <data name="IndexOfStudent" xml:space="preserve">
+</data>
+<data name="HallNumber" xml:space="preserve">
+    <value>Hallenummer</value>
+</data>
+<data name="Home" xml:space="preserve">
+    <value>Startseite</value>
+</data>
+<data name="IndexOfStudent" xml:space="preserve">
     <value>Index des Studenten</value>
-  </data>
-  <data name="IndexOfSubject" xml:space="preserve">
+</data>
+<data name="IndexOfSubject" xml:space="preserve">
     <value>Index des Fachs</value>
-  </data>
-  <data name="JPN" xml:space="preserve">
+</data>
+<data name="JPN" xml:space="preserve">
     <value>Japanisch (Japan)</value>
-  </data>
-  <data name="Language" xml:space="preserve">
+</data>
+<data name="Language" xml:space="preserve">
     <value>Sprache</value>
-  </data>
-  <data name="LearnAbout" xml:space="preserve">
-    <value>Erfahren Sie mehr über </value>
-  </data>
-  <data name="LectureHalls" xml:space="preserve">
-    <value>Hörsäle</value>
-  </data>
-  <data name="Major" xml:space="preserve">
+</data>
+<data name="LearnAbout" xml:space="preserve">
+    <value>Erfahren Sie mehr über</value>
+</data>
+<data name="LectureHall" xml:space="preserve">
+    <value>Vorlesungssaal</value>
+</data>
+<data name="LectureHalls" xml:space="preserve">
+    <value>Vorlesungssäle</value>
+</data>
+<data name="Major" xml:space="preserve">
     <value>Hauptfach</value>
-  </data>
-  <data name="Name" xml:space="preserve">
+</data>
+<data name="Name" xml:space="preserve">
     <value>Name</value>
-  </data>
-  <data name="Operations" xml:space="preserve">
+</data>
+<data name="Operations" xml:space="preserve">
     <value>Operationen</value>
-  </data>
-  <data name="PL" xml:space="preserve">
+</data>
+<data name="PL" xml:space="preserve">
     <value>Polnisch (Polen)</value>
-  </data>
-  <data name="Privacy" xml:space="preserve">
+</data>
+<data name="Privacy" xml:space="preserve">
     <value>Datenschutz</value>
-  </data>
-  <data name="PrivacyPolitic" xml:space="preserve">
+</data>
+<data name="PrivacyPolitic" xml:space="preserve">
     <value>Datenschutzrichtlinie</value>
-  </data>
-  <data name="PrivacyPoliticDesc" xml:space="preserve">
+</data>
+<data name="PrivacyPoliticDesc" xml:space="preserve">
     <value>Beschreibung der Datenschutzrichtlinie</value>
-  </data>
-  <data name="Save" xml:space="preserve">
+</data>
+<data name="Save" xml:space="preserve">
     <value>Speichern</value>
-  </data>
-  <data name="StudentName" xml:space="preserve">
-    <value>Name und Nachname</value>
-  </data>
-  <data name="Students" xml:space="preserve">
+</data>
+<data name="StudentName" xml:space="preserve">
+    <value>Name und Nachname des Studenten</value>
+</data>
+<data name="Students" xml:space="preserve">
     <value>Studenten</value>
-  </data>
-  <data name="Subject" xml:space="preserve">
-    <value>Thema</value>
-  </data>
-  <data name="Subjects" xml:space="preserve">
-    <value>Themen</value>
-  </data>
-  <data name="UA" xml:space="preserve">
+</data>
+<data name="Subject" xml:space="preserve">
+    <value>Fach</value>
+</data>
+<data name="Subjects" xml:space="preserve">
+    <value>Fächer</value>
+</data>
+<data name="Title" xml:space="preserve">
+    <value>Titel</value>
+</data>
+<data name="UA" xml:space="preserve">
     <value>Ukrainisch (Ukraine)</value>
-  </data>
-  <data name="Welcome" xml:space="preserve">
+</data>
+<data name="Welcome" xml:space="preserve">
     <value>Willkommen</value>
-  </data>
+</data>
 </root>
