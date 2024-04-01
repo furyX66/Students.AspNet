@@ -186,6 +186,9 @@
   <data name="LearnAbout" xml:space="preserve">
     <value>Learn about </value>
   </data>
+  <data name="LectureHalls" xml:space="preserve">
+    <value>Lecture Halls</value>
+  </data>
   <data name="Major" xml:space="preserve">
     <value>Major</value>
   </data>

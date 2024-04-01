@@ -26,7 +26,7 @@ namespace Students.Web.Controllers
         // GET: Books/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            var book = await _databaseService.IndexBook();
+            var book = await _databaseService.DetailsBook(id);
             return View(book);
         }
 
@@ -54,16 +54,7 @@ namespace Students.Web.Controllers
         // GET: Books/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
             var book = await _databaseService.EditBook(id);
-            if (book == null)
-            {
-                return NotFound();
-            }
             return View(book);
         }
 
@@ -124,7 +115,7 @@ namespace Students.Web.Controllers
             IActionResult result = View();
             try
             {
-                var book = await _databaseService.BookDeleteConfirm(id);
+                var book = await _databaseService.DeleteBookConfirmed(id);
                 result = RedirectToAction(nameof(Index));
             }
             catch (Exception ex)

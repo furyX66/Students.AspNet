@@ -268,6 +268,15 @@ namespace Students.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sale wykładowe.
+        /// </summary>
+        public static string LectureHalls {
+            get {
+                return ResourceManager.GetString("LectureHalls", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Kierunek.
         /// </summary>
         public static string Major {

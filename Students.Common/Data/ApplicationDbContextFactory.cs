@@ -12,5 +12,3 @@ public class ApplicationDbContextFactory : IDesignTimeDbContextFactory<StudentsC
         return new StudentsContext(optionsBuilder.Options);
     }
 }
-
-

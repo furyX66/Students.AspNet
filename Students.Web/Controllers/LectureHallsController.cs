@@ -6,78 +6,67 @@ using Students.Interfaces;
 
 namespace Students.Web.Controllers
 {
-    public class FieldsOfStudiesController : Controller
+    public class LectureHallsController : Controller
     {
-        private readonly ILogger _logger;
         private readonly IDatabaseService _databaseService;
 
-        public FieldsOfStudiesController(ILogger<FieldsOfStudiesController> looger, IDatabaseService databaseService)
+
+        public LectureHallsController(IDatabaseService databaseService)
         {
-            _logger = looger;
             _databaseService = databaseService;
         }
 
-        // GET: FieldsOfStudies
+        // GET: LectureHalls
         public async Task<IActionResult> Index()
         {
             IActionResult result = View();
-            var model = await _databaseService.IndexFieldOfStudy();
+            var model = await _databaseService.IndexHall();
             result = View(model);
             return result;
         }
 
-        // GET: FieldsOfStudies/Details/5
+        //GET: LectureHalls/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            var fieldOfStudies = await _databaseService.DetailsFieldOfStudies(id);
-            return View(fieldOfStudies);
+            var lectureHall = await _databaseService.DetailsHall(id);
+            return View(lectureHall);
         }
 
-        // GET: FieldsOfStudies/Create
+        //GET: LectureHalls/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: FieldsOfStudies/Create
+        // POST: LectureHalls/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name")] FieldOfStudies fieldOfStudy)
+        public async Task<IActionResult> Create([Bind("Id,HallNumber,Floor")] LectureHall lectureHall)
         {
             if (ModelState.IsValid)
             {
-                fieldOfStudy = await _databaseService.CreateFieldOfStudies(fieldOfStudy);
+                lectureHall = await _databaseService.CreateHall(lectureHall);
                 return RedirectToAction(nameof(Index));
             }
-            return View(fieldOfStudy);
+            return View(lectureHall);
         }
 
-        // GET: FieldsOfStudies/Edit/5
+        // GET: LectureHalls/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var fieldOfStudy = await _databaseService.EditFieldOfStudies(id);
-            if (fieldOfStudy == null)
-            {
-                return NotFound();
-            }
-            return View(fieldOfStudy);
+            var lectureHall = await _databaseService.EditHall(id);
+            return View(lectureHall);
         }
-
-        // POST: FieldsOfStudies/Edit/5
+        // POST: LectureHalls/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] FieldOfStudies fieldOfStudy)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,HallNumber,Floor")] LectureHall lectureHall)
         {
-            if (id != fieldOfStudy.Id)
+            if (id != lectureHall.Id)
             {
                 return NotFound();
             }
@@ -86,11 +75,11 @@ namespace Students.Web.Controllers
             {
                 try
                 {
-                    fieldOfStudy = await _databaseService.EditFieldOfStudies(id, fieldOfStudy);
+                    lectureHall = await _databaseService.EditHall(id, lectureHall);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!FieldOfStudyExists(fieldOfStudy.Id))
+                    if (!LectureHallExists(lectureHall.Id))
                     {
                         return NotFound();
                     }
@@ -101,27 +90,17 @@ namespace Students.Web.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(fieldOfStudy);
+            return View(lectureHall);
         }
 
-        // GET: FieldsOfStudies/Delete/5
+        // GET: LectureHalls/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var fieldOfStudy = await _databaseService.DeleteFieldOfStudies(id);
-            if (fieldOfStudy == null)
-            {
-                return NotFound();
-            }
-
-            return View(fieldOfStudy);
+            var lectureHall = await _databaseService.DeleteHall(id);
+            return View(lectureHall);
         }
 
-        // POST: FieldsOfStudies/Delete/5
+        // POST: LectureHalls/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -129,7 +108,7 @@ namespace Students.Web.Controllers
             IActionResult result = View();
             try
             {
-                var fieldOfStudies = await _databaseService.FieldOfStudiesDeleteConfirm(id);
+                var hall = await _databaseService.DeleteHallConfirmed(id);
                 result = RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
@@ -139,9 +118,9 @@ namespace Students.Web.Controllers
             return result;
         }
 
-        private bool FieldOfStudyExists(int id)
+        private bool LectureHallExists(int id)
         {
-            var result = _databaseService.CheckFieldOfStudiesExist(id);
+            var result = _databaseService.CheckHallExist(id);
             return result;
         }
     }

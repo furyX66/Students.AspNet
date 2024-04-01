@@ -186,6 +186,9 @@
   <data name="LearnAbout" xml:space="preserve">
     <value>Dowiedz się więcej</value>
   </data>
+  <data name="LectureHalls" xml:space="preserve">
+    <value>Sale wykładowe</value>
+  </data>
   <data name="Major" xml:space="preserve">
     <value>Kierunek</value>
   </data>

@@ -186,6 +186,9 @@
   <data name="LearnAbout" xml:space="preserve">
     <value>Дізнатися про </value>
   </data>
+  <data name="LectureHalls" xml:space="preserve">
+    <value>Лекційні аудиторії</value>
+  </data>
   <data name="Major" xml:space="preserve">
     <value>Спеціальність</value>
   </data>

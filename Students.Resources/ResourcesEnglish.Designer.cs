@@ -268,6 +268,15 @@ namespace Students.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Lecture Halls.
+        /// </summary>
+        public static string LectureHalls {
+            get {
+                return ResourceManager.GetString("LectureHalls", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Major.
         /// </summary>
         public static string Major {

@@ -186,6 +186,9 @@
   <data name="LearnAbout" xml:space="preserve">
     <value>詳細について</value>
   </data>
+  <data name="LectureHalls" xml:space="preserve">
+    <value>レクチャーホール</value>
+  </data>
   <data name="Major" xml:space="preserve">
     <value>専攻</value>
   </data>

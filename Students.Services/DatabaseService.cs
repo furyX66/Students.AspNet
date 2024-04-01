@@ -261,17 +261,17 @@ public class DatabaseService : IDatabaseService
         var model = await _context.FieldOfStudies.ToListAsync();
         return model;
     }
+    public async Task<FieldOfStudies> DetailsFieldOfStudies(int? id)
+    {
+        var fieldOfStudies = await _context.FieldOfStudies
+    .FirstOrDefaultAsync(m => m.Id == id);
+        return fieldOfStudies ?? throw new Exception("An error occured");
+    }
     public async Task<FieldOfStudies> CreateFieldOfStudies(FieldOfStudies fieldOfStudies)
     {
         _context.Add(fieldOfStudies);
         await _context.SaveChangesAsync();
         return fieldOfStudies;
-    }
-    public async Task<FieldOfStudies> FieldOfStudiestDetails(int? id)
-    {
-        var fieldOfStudies = await _context.FieldOfStudies
-    .FirstOrDefaultAsync(m => m.Id == id);
-        return fieldOfStudies ?? throw new Exception("An error occured");
     }
     public async Task<FieldOfStudies> EditFieldOfStudies(int? id)
     {
@@ -312,6 +312,12 @@ public class DatabaseService : IDatabaseService
         var result = await _context.Book.ToListAsync();
         return result;
     }
+    public async Task<Book> DetailsBook(int? id)
+    {
+        var book = await _context.Book
+    .FirstOrDefaultAsync(m => m.Id == id);
+        return book ?? throw new Exception("An error occured");
+    }
     public async Task<Book> CreateBook(Book book)
     {
         _context.Add(book);
@@ -335,7 +341,7 @@ public class DatabaseService : IDatabaseService
             .FirstOrDefaultAsync(m => m.Id == id);
         return book ?? throw new Exception("An error occured during removing book");
     }
-    public async Task<bool> BookDeleteConfirm(int? id)
+    public async Task<bool> DeleteBookConfirmed(int? id)
     {
         var result = false;
         var book = await _context.Book.FindAsync(id);
@@ -350,6 +356,57 @@ public class DatabaseService : IDatabaseService
     public bool CheckBookExist(int? id)
     {
         var result = _context.Book.Any(e => e.Id == id);
+        return result;
+    }
+    public async Task<List<LectureHall>> IndexHall()
+    {
+        var result = await _context.LectureHall.ToListAsync();
+        return result;
+    }
+    public async Task<LectureHall> DetailsHall(int? id)
+    {
+        var hall = await _context.LectureHall
+    .FirstOrDefaultAsync(m => m.Id == id);
+        return hall ?? throw new Exception("An error occured");
+    }
+    public async Task<LectureHall> CreateHall(LectureHall hall)
+    {
+        _context.Add(hall);
+        await _context.SaveChangesAsync();
+        return hall;
+    }
+    public async Task<LectureHall> EditHall(int? id)
+    {
+        var hall = await _context.LectureHall.FindAsync(id);
+        return hall ?? throw new Exception("An error occured");
+    }
+    public async Task<LectureHall> EditHall(int id, LectureHall hall)
+    {
+        _context.Update(hall);
+        await _context.SaveChangesAsync();
+        return hall;
+    }
+    public async Task<LectureHall> DeleteHall(int? id)
+    {
+        var hall = await _context.LectureHall
+            .FirstOrDefaultAsync(m => m.Id == id);
+        return hall ?? throw new Exception("An error occured during removing hall");
+    }
+    public async Task<bool> DeleteHallConfirmed(int? id)
+    {
+        var result = false;
+        var book = await _context.LectureHall.FindAsync(id);
+        if (book != null)
+        {
+            _context.LectureHall.Remove(book);
+        }
+        var resultChecker = await _context.SaveChangesAsync();
+        result = resultChecker > 0;
+        return result;
+    }
+    public bool CheckHallExist(int? id)
+    {
+        var result = _context.LectureHall.Any(e => e.Id == id);
         return result;
     }
 }
