@@ -70,6 +70,15 @@ namespace Students.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Автор.
+        /// </summary>
+        public static string Author {
+            get {
+                return ResourceManager.GetString("Author", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Доступні предмети.
         /// </summary>
         public static string AvailableSubjects {
@@ -79,7 +88,34 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ви впевнені, що хочете видалити це?.
+        ///   Looks up a localized string similar to Доступні книги.
+        /// </summary>
+        public static string AvBooks {
+            get {
+                return ResourceManager.GetString("AvBooks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Доступні галузі вивчення.
+        /// </summary>
+        public static string AvFieldsOfStudies {
+            get {
+                return ResourceManager.GetString("AvFieldsOfStudies", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Доступні зали.
+        /// </summary>
+        public static string AvHalls {
+            get {
+                return ResourceManager.GetString("AvHalls", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ви впевнені, що хочете це видалити?.
         /// </summary>
         public static string AYS {
             get {
@@ -97,6 +133,15 @@ namespace Students.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Книга.
+        /// </summary>
+        public static string Book {
+            get {
+                return ResourceManager.GetString("Book", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Книги.
         /// </summary>
         public static string Books {
@@ -106,7 +151,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Побудова веб-додатків за допомогою ASP.NET Core.
+        ///   Looks up a localized string similar to Створення веб-додатків з ASP.NET Core.
         /// </summary>
         public static string BuildingApp {
             get {
@@ -115,7 +160,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Вибрані предмети.
+        ///   Looks up a localized string similar to Обрані предмети.
         /// </summary>
         public static string ChoosenSubjects {
             get {
@@ -133,11 +178,20 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Створити нове.
+        ///   Looks up a localized string similar to Створити новий.
         /// </summary>
         public static string CreateNew {
             get {
                 return ResourceManager.GetString("CreateNew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Створити нову.
+        /// </summary>
+        public static string CreateNewBook {
+            get {
+                return ResourceManager.GetString("CreateNewBook", resourceCulture);
             }
         }
         
@@ -169,6 +223,15 @@ namespace Students.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Опис.
+        /// </summary>
+        public static string Description {
+            get {
+                return ResourceManager.GetString("Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Деталі.
         /// </summary>
         public static string Details {
@@ -196,11 +259,29 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Напрями навчання.
+        ///   Looks up a localized string similar to Галузь вивчення.
+        /// </summary>
+        public static string FieldOfStudies {
+            get {
+                return ResourceManager.GetString("FieldOfStudies", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Галузі вивчення.
         /// </summary>
         public static string FieldsOfStudies {
             get {
                 return ResourceManager.GetString("FieldsOfStudies", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Поверх.
+        /// </summary>
+        public static string Floor {
+            get {
+                return ResourceManager.GetString("Floor", resourceCulture);
             }
         }
         
@@ -210,6 +291,15 @@ namespace Students.Resources {
         public static string GER {
             get {
                 return ResourceManager.GetString("GER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Номер залу.
+        /// </summary>
+        public static string HallNumber {
+            get {
+                return ResourceManager.GetString("HallNumber", resourceCulture);
             }
         }
         
@@ -232,7 +322,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Індекс предмета.
+        ///   Looks up a localized string similar to Індекс предмету.
         /// </summary>
         public static string IndexOfSubject {
             get {
@@ -259,11 +349,20 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Дізнатися про .
+        ///   Looks up a localized string similar to Дізнатись про.
         /// </summary>
         public static string LearnAbout {
             get {
                 return ResourceManager.GetString("LearnAbout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Лекційна аудиторія.
+        /// </summary>
+        public static string LectureHall {
+            get {
+                return ResourceManager.GetString("LectureHall", resourceCulture);
             }
         }
         
@@ -277,7 +376,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Спеціальність.
+        ///   Looks up a localized string similar to Головний предмет.
         /// </summary>
         public static string Major {
             get {
@@ -349,7 +448,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ім&apos;я та прізвище.
+        ///   Looks up a localized string similar to Ім&apos;я та прізвище студента.
         /// </summary>
         public static string StudentName {
             get {
@@ -385,7 +484,16 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Українскька (Україна).
+        ///   Looks up a localized string similar to Назва.
+        /// </summary>
+        public static string Title {
+            get {
+                return ResourceManager.GetString("Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Українська (Україна).
         /// </summary>
         public static string UA {
             get {

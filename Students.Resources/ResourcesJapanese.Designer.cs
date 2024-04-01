@@ -70,11 +70,47 @@ namespace Students.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 著者.
+        /// </summary>
+        public static string Author {
+            get {
+                return ResourceManager.GetString("Author", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 利用可能な科目.
         /// </summary>
         public static string AvailableSubjects {
             get {
                 return ResourceManager.GetString("AvailableSubjects", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 利用可能な書籍.
+        /// </summary>
+        public static string AvBooks {
+            get {
+                return ResourceManager.GetString("AvBooks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 利用可能な研究分野.
+        /// </summary>
+        public static string AvFieldsOfStudies {
+            get {
+                return ResourceManager.GetString("AvFieldsOfStudies", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 利用可能なホール.
+        /// </summary>
+        public static string AvHalls {
+            get {
+                return ResourceManager.GetString("AvHalls", resourceCulture);
             }
         }
         
@@ -99,6 +135,15 @@ namespace Students.Resources {
         /// <summary>
         ///   Looks up a localized string similar to 書籍.
         /// </summary>
+        public static string Book {
+            get {
+                return ResourceManager.GetString("Book", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 書籍.
+        /// </summary>
         public static string Books {
             get {
                 return ResourceManager.GetString("Books", resourceCulture);
@@ -106,7 +151,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ASP.NET Coreを使用したWebアプリの構築.
+        ///   Looks up a localized string similar to ASP.NET Coreでウェブアプリケーションを構築する.
         /// </summary>
         public static string BuildingApp {
             get {
@@ -124,7 +169,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 作成.
+        ///   Looks up a localized string similar to 作成する.
         /// </summary>
         public static string Create {
             get {
@@ -142,7 +187,16 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to クレジット.
+        ///   Looks up a localized string similar to 新規作成.
+        /// </summary>
+        public static string CreateNewBook {
+            get {
+                return ResourceManager.GetString("CreateNewBook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 単位.
         /// </summary>
         public static string Credits {
             get {
@@ -165,6 +219,15 @@ namespace Students.Resources {
         public static string Delete {
             get {
                 return ResourceManager.GetString("Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 説明.
+        /// </summary>
+        public static string Description {
+            get {
+                return ResourceManager.GetString("Description", resourceCulture);
             }
         }
         
@@ -198,9 +261,27 @@ namespace Students.Resources {
         /// <summary>
         ///   Looks up a localized string similar to 研究分野.
         /// </summary>
+        public static string FieldOfStudies {
+            get {
+                return ResourceManager.GetString("FieldOfStudies", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 研究分野.
+        /// </summary>
         public static string FieldsOfStudies {
             get {
                 return ResourceManager.GetString("FieldsOfStudies", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 階.
+        /// </summary>
+        public static string Floor {
+            get {
+                return ResourceManager.GetString("Floor", resourceCulture);
             }
         }
         
@@ -210,6 +291,15 @@ namespace Students.Resources {
         public static string GER {
             get {
                 return ResourceManager.GetString("GER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ホール番号.
+        /// </summary>
+        public static string HallNumber {
+            get {
+                return ResourceManager.GetString("HallNumber", resourceCulture);
             }
         }
         
@@ -259,7 +349,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 詳細について.
+        ///   Looks up a localized string similar to 詳細を確認する.
         /// </summary>
         public static string LearnAbout {
             get {
@@ -268,7 +358,16 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to レクチャーホール.
+        ///   Looks up a localized string similar to 講義ホール.
+        /// </summary>
+        public static string LectureHall {
+            get {
+                return ResourceManager.GetString("LectureHall", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 講義ホール.
         /// </summary>
         public static string LectureHalls {
             get {
@@ -349,7 +448,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 名前と姓.
+        ///   Looks up a localized string similar to 学生の名前と姓.
         /// </summary>
         public static string StudentName {
             get {
@@ -381,6 +480,15 @@ namespace Students.Resources {
         public static string Subjects {
             get {
                 return ResourceManager.GetString("Subjects", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to タイトル.
+        /// </summary>
+        public static string Title {
+            get {
+                return ResourceManager.GetString("Title", resourceCulture);
             }
         }
         

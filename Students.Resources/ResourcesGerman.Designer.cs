@@ -70,11 +70,47 @@ namespace Students.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Autor.
+        /// </summary>
+        public static string Author {
+            get {
+                return ResourceManager.GetString("Author", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Verfügbare Fächer.
         /// </summary>
         public static string AvailableSubjects {
             get {
                 return ResourceManager.GetString("AvailableSubjects", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Verfügbare Bücher.
+        /// </summary>
+        public static string AvBooks {
+            get {
+                return ResourceManager.GetString("AvBooks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Verfügbare Studienfelder.
+        /// </summary>
+        public static string AvFieldsOfStudies {
+            get {
+                return ResourceManager.GetString("AvFieldsOfStudies", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Verfügbare Säle.
+        /// </summary>
+        public static string AvHalls {
+            get {
+                return ResourceManager.GetString("AvHalls", resourceCulture);
             }
         }
         
@@ -97,6 +133,15 @@ namespace Students.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Buch.
+        /// </summary>
+        public static string Book {
+            get {
+                return ResourceManager.GetString("Book", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bücher.
         /// </summary>
         public static string Books {
@@ -106,7 +151,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Erstellen von Web-Apps mit ASP.NET Core.
+        ///   Looks up a localized string similar to Erstellen von Webanwendungen mit ASP.NET Core.
         /// </summary>
         public static string BuildingApp {
             get {
@@ -142,7 +187,16 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Guthaben.
+        ///   Looks up a localized string similar to Neu erstellen.
+        /// </summary>
+        public static string CreateNewBook {
+            get {
+                return ResourceManager.GetString("CreateNewBook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Credits.
         /// </summary>
         public static string Credits {
             get {
@@ -165,6 +219,15 @@ namespace Students.Resources {
         public static string Delete {
             get {
                 return ResourceManager.GetString("Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Beschreibung.
+        /// </summary>
+        public static string Description {
+            get {
+                return ResourceManager.GetString("Description", resourceCulture);
             }
         }
         
@@ -196,11 +259,29 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Studienrichtungen.
+        ///   Looks up a localized string similar to Studiengang.
+        /// </summary>
+        public static string FieldOfStudies {
+            get {
+                return ResourceManager.GetString("FieldOfStudies", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Studiengänge.
         /// </summary>
         public static string FieldsOfStudies {
             get {
                 return ResourceManager.GetString("FieldsOfStudies", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Etage.
+        /// </summary>
+        public static string Floor {
+            get {
+                return ResourceManager.GetString("Floor", resourceCulture);
             }
         }
         
@@ -214,7 +295,16 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Zuhause.
+        ///   Looks up a localized string similar to Hallenummer.
+        /// </summary>
+        public static string HallNumber {
+            get {
+                return ResourceManager.GetString("HallNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Startseite.
         /// </summary>
         public static string Home {
             get {
@@ -259,7 +349,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Erfahren Sie mehr über .
+        ///   Looks up a localized string similar to Erfahren Sie mehr über.
         /// </summary>
         public static string LearnAbout {
             get {
@@ -268,7 +358,16 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Hörsäle.
+        ///   Looks up a localized string similar to Vorlesungssaal.
+        /// </summary>
+        public static string LectureHall {
+            get {
+                return ResourceManager.GetString("LectureHall", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vorlesungssäle.
         /// </summary>
         public static string LectureHalls {
             get {
@@ -349,7 +448,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Name und Nachname.
+        ///   Looks up a localized string similar to Name und Nachname des Studenten.
         /// </summary>
         public static string StudentName {
             get {
@@ -367,7 +466,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Thema.
+        ///   Looks up a localized string similar to Fach.
         /// </summary>
         public static string Subject {
             get {
@@ -376,11 +475,20 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Themen.
+        ///   Looks up a localized string similar to Fächer.
         /// </summary>
         public static string Subjects {
             get {
                 return ResourceManager.GetString("Subjects", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Titel.
+        /// </summary>
+        public static string Title {
+            get {
+                return ResourceManager.GetString("Title", resourceCulture);
             }
         }
         

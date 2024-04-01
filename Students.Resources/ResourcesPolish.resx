@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-Вот перевод на польский язык:
-
-```xml
   <data name="Age" xml:space="preserve">
     <value>Wiek</value>
   </data>
@@ -161,6 +158,9 @@
   </data>
   <data name="CreateNew" xml:space="preserve">
     <value>Stwórz nowe</value>
+  </data>
+  <data name="CreateNewBook" xml:space="preserve">
+    <value>Utwórz nową</value>
   </data>
   <data name="Credits" xml:space="preserve">
     <value>Kredyty</value>

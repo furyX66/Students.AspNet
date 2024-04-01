@@ -159,6 +159,9 @@
   <data name="CreateNew" xml:space="preserve">
     <value>Create New</value>
   </data>
+  <data name="CreateNewBook" xml:space="preserve">
+    <value>Create New</value>
+  </data>
   <data name="Credits" xml:space="preserve">
     <value>Credits</value>
   </data>

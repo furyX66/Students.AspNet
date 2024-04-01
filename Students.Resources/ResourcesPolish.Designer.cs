@@ -70,7 +70,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Awtor.
+        ///   Looks up a localized string similar to Autor.
         /// </summary>
         public static string Author {
             get {
@@ -84,6 +84,33 @@ namespace Students.Resources {
         public static string AvailableSubjects {
             get {
                 return ResourceManager.GetString("AvailableSubjects", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dostępne książki.
+        /// </summary>
+        public static string AvBooks {
+            get {
+                return ResourceManager.GetString("AvBooks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dostępne dziedziny nauki.
+        /// </summary>
+        public static string AvFieldsOfStudies {
+            get {
+                return ResourceManager.GetString("AvFieldsOfStudies", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dostępne sale.
+        /// </summary>
+        public static string AvHalls {
+            get {
+                return ResourceManager.GetString("AvHalls", resourceCulture);
             }
         }
         
@@ -106,6 +133,15 @@ namespace Students.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Książka.
+        /// </summary>
+        public static string Book {
+            get {
+                return ResourceManager.GetString("Book", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Książki.
         /// </summary>
         public static string Books {
@@ -115,7 +151,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tworzenie aplikacji internetowych za pomocą ASP.NET Core.
+        ///   Looks up a localized string similar to Budowanie aplikacji internetowych z ASP.NET Core.
         /// </summary>
         public static string BuildingApp {
             get {
@@ -124,7 +160,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Wybrane Przedmioty.
+        ///   Looks up a localized string similar to Wybrane przedmioty.
         /// </summary>
         public static string ChoosenSubjects {
             get {
@@ -133,7 +169,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Utwórz.
+        ///   Looks up a localized string similar to Stwórz.
         /// </summary>
         public static string Create {
             get {
@@ -142,11 +178,20 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Utwórz nowy.
+        ///   Looks up a localized string similar to Stwórz nowe.
         /// </summary>
         public static string CreateNew {
             get {
                 return ResourceManager.GetString("CreateNew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Utwórz nową.
+        /// </summary>
+        public static string CreateNewBook {
+            get {
+                return ResourceManager.GetString("CreateNewBook", resourceCulture);
             }
         }
         
@@ -178,7 +223,16 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Wyświetl.
+        ///   Looks up a localized string similar to Opis.
+        /// </summary>
+        public static string Description {
+            get {
+                return ResourceManager.GetString("Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Szczegóły.
         /// </summary>
         public static string Details {
             get {
@@ -205,11 +259,29 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Kierunki studiów.
+        ///   Looks up a localized string similar to Dziedzina nauki.
+        /// </summary>
+        public static string FieldOfStudies {
+            get {
+                return ResourceManager.GetString("FieldOfStudies", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dziedziny nauki.
         /// </summary>
         public static string FieldsOfStudies {
             get {
                 return ResourceManager.GetString("FieldsOfStudies", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Piętro.
+        /// </summary>
+        public static string Floor {
+            get {
+                return ResourceManager.GetString("Floor", resourceCulture);
             }
         }
         
@@ -219,6 +291,15 @@ namespace Students.Resources {
         public static string GER {
             get {
                 return ResourceManager.GetString("GER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Numer sali.
+        /// </summary>
+        public static string HallNumber {
+            get {
+                return ResourceManager.GetString("HallNumber", resourceCulture);
             }
         }
         
@@ -268,7 +349,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Dowiedz się więcej.
+        ///   Looks up a localized string similar to Dowiedz się o.
         /// </summary>
         public static string LearnAbout {
             get {
@@ -277,7 +358,16 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sale wykładowe.
+        ///   Looks up a localized string similar to Aula.
+        /// </summary>
+        public static string LectureHall {
+            get {
+                return ResourceManager.GetString("LectureHall", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aule.
         /// </summary>
         public static string LectureHalls {
             get {
@@ -286,7 +376,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Kierunek.
+        ///   Looks up a localized string similar to Kierunek studiów.
         /// </summary>
         public static string Major {
             get {
@@ -295,7 +385,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nazwa.
+        ///   Looks up a localized string similar to Imię.
         /// </summary>
         public static string Name {
             get {
@@ -331,7 +421,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Polityka Prywatności.
+        ///   Looks up a localized string similar to Polityka prywatności.
         /// </summary>
         public static string PrivacyPolitic {
             get {
@@ -358,7 +448,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Imię.
+        ///   Looks up a localized string similar to Imię i nazwisko studenta.
         /// </summary>
         public static string StudentName {
             get {
@@ -394,7 +484,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nazwa.
+        ///   Looks up a localized string similar to Tytuł.
         /// </summary>
         public static string Title {
             get {
