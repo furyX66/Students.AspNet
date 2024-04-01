@@ -1,16 +1,8 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using Students.Common.Data;
 using Students.Common.Models;
 using Students.Interfaces;
-using Microsoft.EntityFrameworkCore;
-using System.Threading.Tasks;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-using System.Runtime.InteropServices;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Students.Services;
 
 namespace Students.Services;
 
@@ -32,7 +24,12 @@ public class DatabaseService : IDatabaseService
     #endregion // Ctor and Properties
 
     #region Public Methods
-
+    
+    public async Task<List<Student>> IndexStudent()
+    {
+        var result = await _context.Student.ToListAsync();
+        return result;
+    }
     public bool EditStudent(int id, string name, int age, string major, int[] subjectIdDst)
     {
         var result = false;
@@ -75,18 +72,6 @@ public class DatabaseService : IDatabaseService
 
         return result;
     }
-    public async Task<bool> StudentDeleteConfirm(int id)
-    {
-        var result = false;
-        var student = await _context.Student.FindAsync(id);
-        if (student != null)
-        {
-            _context.Student.Remove(student);
-        }
-        var resultChecker = await _context.SaveChangesAsync();
-        result = resultChecker > 0;
-        return result;
-    }
     public async Task<Student> EditStudent(int? id)
     {
         var student = await _context.Student.FindAsync(id);
@@ -111,18 +96,18 @@ public class DatabaseService : IDatabaseService
                 }
                 else
                 {
-                    return null;
+                    throw new Exception("An error occured");
                 }
             }
             else
             {
-                return null;
+                throw new Exception("An error occured");
             }
         }
         catch (Exception ex)
         {
             _logger.LogError("Exception caught: " + ex.Message);
-            return null;
+            throw new Exception("An error occured");
         }
     }
     public async Task<Student> DisplayStudent(int? id)
@@ -143,12 +128,24 @@ public class DatabaseService : IDatabaseService
             _logger.LogError("Exception caught in DisplayStudent: " + ex);
         }
 
-        return student;
+        return student ?? throw new Exception("An error occured");
     }
     public async Task<List<Student>> IndexStudents()
     {
         var model = await _context.Student.ToListAsync();
         return model;
+    }
+    public async Task<bool> StudentDeleteConfirm(int id)
+    {
+        var result = false;
+        var student = await _context.Student.FindAsync(id);
+        if (student != null)
+        {
+            _context.Student.Remove(student);
+        }
+        var resultChecker = await _context.SaveChangesAsync();
+        result = resultChecker > 0;
+        return result;
     }
     public bool CheckStudentExist(int? id)
     {
@@ -206,7 +203,7 @@ public class DatabaseService : IDatabaseService
             }
             _context.Add(student);
             var addResult = await _context.SaveChangesAsync();
-            if(addResult == 0)
+            if (addResult == 0)
             {
                 throw new Exception("An error occured during saving data");
             }
@@ -218,16 +215,27 @@ public class DatabaseService : IDatabaseService
         }
         return result;
     }
-    public async Task<Subject> SubjectDetails (int? id)
+    public async Task<List<Subject>> IndexSubject()
+    {
+        var result = await _context.Subject.ToListAsync();
+        return result;
+    }
+    public async Task<Subject> SubjectDetails(int? id)
     {
         var subject = await _context.Subject
     .FirstOrDefaultAsync(m => m.Id == id);
-        return subject;
+        return subject ?? throw new Exception("An error occured");
     }
     public async Task<Subject> EditSubject(int? id)
     {
         var subject = await _context.Subject.FindAsync(id);
         return subject ?? throw new Exception("An error occured");
+    }
+    public async Task<Subject> EditSubject(int id, Subject subject)
+    {
+        _context.Update(subject);
+        await _context.SaveChangesAsync();
+        return subject;
     }
     public async Task<Subject> DeleteSubject(int? id)
     {
@@ -252,19 +260,63 @@ public class DatabaseService : IDatabaseService
         var result = _context.Subject.Any(e => e.Id == id);
         return result;
     }
-    public async Task<Subject> EditSubject(int id, Subject subject)
-    {
-        _context.Update(subject);
-        await _context.SaveChangesAsync();
-        return subject;
-    }
     public async Task<Subject> CreateSubject(Subject subject)
     {
         _context.Add(subject);
         await _context.SaveChangesAsync();
         return subject;
     }
-
+    public async Task<List<FieldOfStudies>> IndexFieldOfStudy()
+    {
+        var model = await _context.FieldOfStudies.ToListAsync();
+        return model;
+    }
+    public async Task<FieldOfStudies> CreateFieldOfStudies(FieldOfStudies fieldOfStudies)
+    {
+        _context.Add(fieldOfStudies);
+        await _context.SaveChangesAsync();
+        return fieldOfStudies;
+    }
+    public async Task<FieldOfStudies> FieldOfStudiestDetails(int? id)
+    {
+        var fieldOfStudies = await _context.FieldOfStudies
+    .FirstOrDefaultAsync(m => m.Id == id);
+        return fieldOfStudies ?? throw new Exception("An error occured");
+    }
+    public async Task<FieldOfStudies> EditFieldOfStudies(int? id)
+    {
+        var fieldOfStudies = await _context.FieldOfStudies.FindAsync(id);
+        return fieldOfStudies ?? throw new Exception("An error occured");
+    }
+    public async Task<FieldOfStudies> EditFieldOfStudies(int id, FieldOfStudies fieldOfStudies)
+    {
+        _context.Update(fieldOfStudies);
+        await _context.SaveChangesAsync();
+        return fieldOfStudies;
+    }
+    public async Task<FieldOfStudies> DeleteFieldOfStudies(int? id)
+    {
+        var fieldOfStudies = await _context.FieldOfStudies
+            .FirstOrDefaultAsync(m => m.Id == id);
+        return fieldOfStudies ?? throw new Exception("An error occured during removing field of studies");
+    }
+    public async Task<bool> FieldOfStudiesDeleteConfirm(int? id)
+    {
+        var result = false;
+        var fieldOfStudies = await _context.FieldOfStudies.FindAsync(id);
+        if (fieldOfStudies != null)
+        {
+            _context.FieldOfStudies.Remove(fieldOfStudies);
+        }
+        var resultChecker = await _context.SaveChangesAsync();
+        result = resultChecker > 0;
+        return result;
+    }
+    public bool CheckFieldOfStudiesExist(int? id)
+    {
+        var result = _context.FieldOfStudies.Any(e => e.Id == id);
+        return result;
+    }
 
 }
     #endregion // Public Methods

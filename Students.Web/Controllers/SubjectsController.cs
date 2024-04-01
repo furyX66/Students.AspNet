@@ -8,19 +8,19 @@ namespace Students.Web.Controllers;
 
 public class SubjectsController : Controller
 {
-    private readonly StudentsContext _context;
     private readonly IDatabaseService _databaseService;
-
-    public SubjectsController(StudentsContext context, IDatabaseService databaseService)
+    public SubjectsController(IDatabaseService databaseService)
     {
-        _context = context;
         _databaseService = databaseService;
     }
 
     // GET: Subjects
     public async Task<IActionResult> Index()
     {
-        return View(await _context.Subject.ToListAsync());
+        IActionResult result = View();
+        var model = await _databaseService.IndexSubject();
+        result = View(model);
+        return result;
     }
 
     // GET: Subjects/Details/5
@@ -137,7 +137,6 @@ public class SubjectsController : Controller
         try
         {
             var subject = await _databaseService.SubjectDeleteConfirm(id);
-            await _context.SaveChangesAsync();
             result = RedirectToAction(nameof(Index));
         }
         catch (Exception ex)

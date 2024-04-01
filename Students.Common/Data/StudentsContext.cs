@@ -13,6 +13,7 @@ public class StudentsContext : DbContext
     public DbSet<Student> Student { get; set; } = default!;
     public DbSet<Subject> Subject { get; set; } = default!;
     public DbSet<StudentSubject> StudentSubject { get; set; } = default!;
+    public DbSet<FieldOfStudies> FieldOfStudies { get; set; } = default!;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

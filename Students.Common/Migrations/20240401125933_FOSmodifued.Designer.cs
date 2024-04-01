@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Students.Common.Data;
 
@@ -11,9 +12,11 @@ using Students.Common.Data;
 namespace Students.Common.Migrations
 {
     [DbContext(typeof(StudentsContext))]
-    partial class StudentsContextModelSnapshot : ModelSnapshot
+    [Migration("20240401125933_FOSmodifued")]
+    partial class FOSmodifued
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,7 +39,7 @@ namespace Students.Common.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("FieldOfStudies");
+                    b.ToTable("FieldsOfStudies");
                 });
 
             modelBuilder.Entity("Students.Common.Models.Student", b =>

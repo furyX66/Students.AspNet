@@ -8,18 +8,15 @@ public class StudentsController : Controller
 {
     #region Ctor And Properties
 
-    private readonly StudentsContext _context;
     private readonly ILogger _logger;
     private readonly ISharedResourcesService _sharedResourcesService;
     private readonly IDatabaseService _databaseService;
 
     public StudentsController(
-        StudentsContext context,
         ILogger<StudentsController> logger,
         ISharedResourcesService sharedResourcesService,
         IDatabaseService databaseService)
     {
-        _context = context;
         _logger = logger;
         _sharedResourcesService = sharedResourcesService;
         _databaseService = databaseService;
@@ -154,7 +151,7 @@ public class StudentsController : Controller
         {
             // Log the exception and set the result to return the view with the current student
             _logger.LogError("Exception caught: " + ex.Message);
-            var student = await _context.Student.FindAsync(id);
+            var student = await _databaseService.DisplayStudent(id);
             result = View(student);
         }
 
@@ -201,7 +198,6 @@ public class StudentsController : Controller
         try
         {
             var student = await _databaseService.StudentDeleteConfirm(id);
-            await _context.SaveChangesAsync();
             result = RedirectToAction(nameof(Index));
         }
         catch (Exception ex)

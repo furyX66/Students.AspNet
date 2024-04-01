@@ -159,6 +159,9 @@
   <data name="EN" xml:space="preserve">
     <value>English (US)</value>
   </data>
+  <data name="FieldsOfStudies" xml:space="preserve">
+    <value>Fields Of Studies</value>
+  </data>
   <data name="GER" xml:space="preserve">
     <value>German (Germany)</value>
   </data>

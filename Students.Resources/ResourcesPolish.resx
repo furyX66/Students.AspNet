@@ -159,6 +159,9 @@
   <data name="EN" xml:space="preserve">
     <value>Angielski (US)</value>
   </data>
+  <data name="FieldsOfStudies" xml:space="preserve">
+    <value>Kierunki studiów</value>
+  </data>
   <data name="GER" xml:space="preserve">
     <value>Niemiecki (Niemcy)</value>
   </data>

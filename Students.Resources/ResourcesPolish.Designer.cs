@@ -187,6 +187,15 @@ namespace Students.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Kierunki studiów.
+        /// </summary>
+        public static string FieldsOfStudies {
+            get {
+                return ResourceManager.GetString("FieldsOfStudies", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Niemiecki (Niemcy).
         /// </summary>
         public static string GER {

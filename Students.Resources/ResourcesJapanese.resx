@@ -159,6 +159,9 @@
   <data name="EN" xml:space="preserve">
     <value>英語（米国）</value>
   </data>
+  <data name="FieldsOfStudies" xml:space="preserve">
+    <value>研究分野</value>
+  </data>
   <data name="GER" xml:space="preserve">
     <value>ドイツ語（ドイツ）</value>
   </data>
