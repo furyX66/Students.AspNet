@@ -1,0 +1,65 @@
+﻿@model Student
+@using Students.Interfaces
+@using System.Globalization
+
+@inject ISharedResourcesService sharedResourcesService
+
+@{
+    CultureInfo cultureInfo = CultureInfo.GetCultureInfo(Context.Session.GetString("Culture") ?? "en-US");
+}
+
+@{
+    Layout = null;
+}   
+
+<div name="subjectsChoice">
+    <table>
+        <thead>
+        <th>@sharedResourcesService.GetString("AvailableSubjects", cultureInfo)</th>
+        <th>@sharedResourcesService.GetString("Operations", cultureInfo)</th>
+        <th>@sharedResourcesService.GetString("ChoosenSubjects", cultureInfo)</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <select style="width: 300px;"
+                            multiple
+                            class="form-control"
+                            id="availableSubjects"
+                            name="subjectIdSrc">
+                        @{
+                            if (Model.AvailableSubjects != null)
+                            {
+                                foreach (var subject in Model.AvailableSubjects)
+                                {
+                                    <option value="@subject.Id">@subject.Name</option>
+                                }
+                            }
+                        }
+                    </select>
+                </td>
+                <td>
+                    <button type="button" style="width: 200px;" name="moveright" onclick="moveRight()">==></button>
+                    <button type="button" style="width: 200px;" name="moveleft" onclick="moveLeft()"><==</button>
+                </td>
+                <td>
+                    <select style="width: 300px;"
+                            multiple
+                            class="form-control"
+                            id="chosenSubjects"
+                            name="subjectIdDst">
+                        @{
+                            if (Model.StudentSubjects != null)
+                            {
+                                foreach (var ss in Model.StudentSubjects)
+                                {
+                                    <option value="@ss.Subject.Id">@ss.Subject.Name</option>
+                                }
+                            }
+                        }
+                    </select>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
