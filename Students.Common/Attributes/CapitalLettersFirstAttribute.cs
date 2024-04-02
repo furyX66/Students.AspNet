@@ -10,12 +10,11 @@ public class CapitalLettersFirstAttribute : ValidationAttribute
         var result = new ValidationResult("The field must start with capital letter and can't contain numbers or special symbols.");
         if (value is string str)
         {
-            if (Regex.IsMatch(str, @"^[^\d\W][\p{L}\s]*$"))
+            if (Regex.IsMatch(str, @"^[A-Z][^\d\W]*(\s[A-Z][^\d\W]*)*$"))
             {
                 result = ValidationResult.Success;
             }
         }
-
         return result;
     }
 }

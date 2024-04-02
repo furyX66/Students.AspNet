@@ -30,47 +30,38 @@ public class DatabaseService : IDatabaseService
         var result = await _context.Student.ToListAsync();
         return result;
     }
-    public bool EditStudent(int id, string name, int age, string major, int[] subjectIdDst)
+    public async Task<Student> EditStudent(Student student, int[] subjectIdDst)
     {
-        var result = false;
-
-        // Find the student
-        var student = _context.Student.Find(id);
-        if (student != null)
+        var existingStudent = await _context.Student.FindAsync(student.Id);
+        if (existingStudent != null)
         {
-            // Update the student's properties
-            student.Name = name;
-            student.Age = age;
-            student.Major = major;
+            existingStudent.Name = student.Name;
+            existingStudent.Age = student.Age;
+            existingStudent.Major = student.Major;
+            existingStudent.PostalCode = student.PostalCode;
 
-            // Get the chosen subjects
-            var chosenSubjects = _context.Subject
-                .Where(s => subjectIdDst.Contains(s.Id))
-                .ToList();
-
-            // Remove the existing StudentSubject entities for the student
-            var studentSubjects = _context.StudentSubject
-                .Where(ss => ss.StudentId == id)
-                .ToList();
+            var studentSubjects = await _context.StudentSubject
+                .Where(ss => ss.StudentId == student.Id)
+                .ToListAsync();
             _context.StudentSubject.RemoveRange(studentSubjects);
 
-            // Add new StudentSubject entities for the chosen subjects
+            var chosenSubjects = await _context.Subject
+                .Where(s => subjectIdDst.Contains(s.Id))
+                .ToListAsync();
+
             foreach (var subject in chosenSubjects)
             {
                 var studentSubject = new StudentSubject
                 {
-                    Student = student,
+                    Student = existingStudent,
                     Subject = subject
                 };
                 _context.StudentSubject.Add(studentSubject);
             }
-
-            // Save changes to the database
-            var resultInt = _context.SaveChanges();
-            result = resultInt > 0;
+            await _context.SaveChangesAsync();
         }
 
-        return result;
+        return existingStudent;
     }
     public async Task<Student> EditStudent(int? id)
     {
