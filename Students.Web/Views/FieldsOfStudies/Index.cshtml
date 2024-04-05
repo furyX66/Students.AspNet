@@ -9,6 +9,12 @@
     ViewData["Title"] = "Index";
 }
 
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
 <h1>@sharedResourcesService.GetString("AvFieldsOfStudies", cultureInfo)</h1>
 
 <p>

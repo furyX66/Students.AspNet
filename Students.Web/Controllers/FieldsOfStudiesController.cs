@@ -134,7 +134,8 @@ namespace Students.Web.Controllers
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Exception caught: " + ex.Message);
+                TempData["ErrorMessage"] = "An error occurred: " + ex.Message;
+                result = RedirectToAction(nameof(Index));
             }
             return result;
         }

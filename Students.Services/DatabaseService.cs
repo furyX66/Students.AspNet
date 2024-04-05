@@ -3,6 +3,8 @@ using Microsoft.Extensions.Logging;
 using Students.Common.Data;
 using Students.Common.Models;
 using Students.Interfaces;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Students.Services;
 
@@ -48,7 +50,7 @@ public class DatabaseService : IDatabaseService
     }
     public async Task<Student> CreateStudent(Student student, int[] subjectIdDst, int fieldIdDst)
     {
-        try         
+        try  
         {
             var chosenSubjects = _context.Subject
                 .Where(s => subjectIdDst.Contains(s.Id))
@@ -69,9 +71,6 @@ public class DatabaseService : IDatabaseService
 
             _context.Add(student);
             await _context.SaveChangesAsync();
-            {
-                throw new Exception("An error occurred during saving data");
-            }
         }
         catch (Exception ex)
         {
@@ -290,18 +289,26 @@ public class DatabaseService : IDatabaseService
         return fieldOfStudies;
     }
     public async Task<FieldOfStudies> DeleteFieldOfStudies(int? id)
-    {
+    {        
         var fieldOfStudies = await _context.FieldOfStudies
             .FirstOrDefaultAsync(m => m.Id == id);
-        return fieldOfStudies ?? throw new Exception("An error occured during removing field of studies");
+        return fieldOfStudies;
     }
     public async Task<bool> FieldOfStudiesDeleteConfirm(int? id)
     {
         var result = false;
-        var fieldOfStudies = await _context.FieldOfStudies.FindAsync(id);
-        if (fieldOfStudies != null)
+        var student = await _context.Student.FirstOrDefaultAsync(s => s.FieldOfStudyId == id);
+        if (student != null)
         {
-            _context.FieldOfStudies.Remove(fieldOfStudies);
+            throw new Exception("Cannot delete Field of Studies because it is associated with a Student."); 
+        }
+        else
+        {
+            var fieldOfStudies = await _context.FieldOfStudies.FindAsync(id);
+            if (fieldOfStudies != null)
+            {
+                _context.FieldOfStudies.Remove(fieldOfStudies);
+            }
         }
         var resultChecker = await _context.SaveChangesAsync();
         result = resultChecker > 0;

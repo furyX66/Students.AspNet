@@ -1,12 +1,13 @@
 ﻿using Students.Common.Models;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Students.Interfaces;
 
 public interface IDatabaseService
 {
-    Task<Student> EditStudent(Student student, int[] subjectIdDst, int fieldIdDst);
-
     Task<Student> CreateStudent(Student student, int[] subjectIdDst, int fieldIdDst);
+    Task<Student> EditStudent(Student student, int[] subjectIdDst, int fieldIdDst);
     Task<Student> DisplayStudent(int? id);
 
     bool CheckStudentExist(int? id);
