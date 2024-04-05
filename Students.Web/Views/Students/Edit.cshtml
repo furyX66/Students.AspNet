@@ -41,6 +41,7 @@
             <div class="form-group">
                 <label for="StudentFieldOfStudies">@sharedResourcesService.GetString("FieldOfStudies", cultureInfo)</label>
                 <select class="form-select" name="fieldIdDst" id="chosenFieldOfStudy" onchange="selectFieldOfStudies()">
+                    <option value="@Model.FieldOfStudyId" selected>@Model.FieldOfStudies.Name</option>
                     @foreach (var fieldOfStudy in Model.AvailableFieldOfStudies)
                     {
                         <option value="@fieldOfStudy.Id">@fieldOfStudy.Name</option>

@@ -50,7 +50,7 @@ public class DatabaseService : IDatabaseService
     }
     public async Task<Student> CreateStudent(Student student, int[] subjectIdDst, int fieldIdDst)
     {
-        try  
+        try
         {
             var chosenSubjects = _context.Subject
                 .Where(s => subjectIdDst.Contains(s.Id))
@@ -58,10 +58,14 @@ public class DatabaseService : IDatabaseService
             var availableSubjects = _context.Subject
                 .Where(s => !subjectIdDst.Contains(s.Id))
                 .ToList();
+            var availableFieldOfStudy = await _context.FieldOfStudies
+                .Where(f => f.Id != fieldIdDst)
+                 .ToListAsync();
             var chosenFieldOfStudies = await _context.FieldOfStudies.FindAsync(fieldIdDst);
-            student.FieldOfStudyId = fieldIdDst;
+                student.FieldOfStudyId = fieldIdDst;
 
             student.AvailableSubjects = availableSubjects;
+            student.AvailableFieldOfStudies= availableFieldOfStudy;
             student.FieldOfStudies = chosenFieldOfStudies;
 
             foreach (var chosenSubject in chosenSubjects)
@@ -135,15 +139,15 @@ public class DatabaseService : IDatabaseService
                     var availableSubjects = _context.Subject
                         .Where(s => !chosenSubjects.Contains(s))
                         .ToList();
-                    var avaliableFields = _context.FieldOfStudies
-                        .ToList();
                     student.FieldOfStudies = await _context.FieldOfStudies.FindAsync(student.FieldOfStudyId);
-
+                    var availableFieldOfStudy = await _context.FieldOfStudies
+                        .Where(f => f.Id != student.FieldOfStudyId)
+                        .ToListAsync();
                     student.StudentSubjects = _context.StudentSubject
                         .Where(x => x.StudentId == id)
                         .ToList();
                     student.AvailableSubjects = availableSubjects;
-                    student.AvailableFieldOfStudies = avaliableFields;
+                    student.AvailableFieldOfStudies= availableFieldOfStudy;
                     return student;
                 }
                 else
