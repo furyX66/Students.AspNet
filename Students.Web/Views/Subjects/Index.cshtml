@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Subject>
+@using Students.Interfaces
+@using System.Globalization
+
+@inject ISharedResourcesService sharedResourcesService
+
+@{
+    CultureInfo cultureInfo = CultureInfo.GetCultureInfo(Context.Session.GetString("Culture") ?? "en-US");
+    ViewData["Title"] = "Delete";
+}
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>@sharedResourcesService.GetString("IndexOfSubject", cultureInfo)</h1>
+
+<p>
+    <a asp-action="Create">@sharedResourcesService.GetString("Create", cultureInfo)</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @sharedResourcesService.GetString("Name", cultureInfo)
+            </th>
+            <th>
+                @sharedResourcesService.GetString("Credits", cultureInfo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Credits)
+            </td>
+            <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">@sharedResourcesService.GetString("Edit", cultureInfo)</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">@sharedResourcesService.GetString("Details", cultureInfo)</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">@sharedResourcesService.GetString("Delete", cultureInfo)</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
