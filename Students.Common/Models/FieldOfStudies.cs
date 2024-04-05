@@ -9,8 +9,9 @@
         {
             Name = name;
         }
+
         public FieldOfStudies()
-        {           
+        {
         }
     }
 }

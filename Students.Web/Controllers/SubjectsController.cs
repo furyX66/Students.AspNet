@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Students.Common.Data;
 using Students.Common.Models;
 using Students.Interfaces;
 
@@ -9,6 +8,7 @@ namespace Students.Web.Controllers;
 public class SubjectsController : Controller
 {
     private readonly IDatabaseService _databaseService;
+
     public SubjectsController(IDatabaseService databaseService)
     {
         _databaseService = databaseService;

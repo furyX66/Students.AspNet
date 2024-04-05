@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Students.Common.Data;
 using Students.Common.Models;
 using Students.Interfaces;
 
@@ -9,7 +8,6 @@ namespace Students.Web.Controllers
     public class LectureHallsController : Controller
     {
         private readonly IDatabaseService _databaseService;
-
 
         public LectureHallsController(IDatabaseService databaseService)
         {
@@ -59,6 +57,7 @@ namespace Students.Web.Controllers
             var lectureHall = await _databaseService.EditHall(id);
             return View(lectureHall);
         }
+
         // POST: LectureHalls/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.

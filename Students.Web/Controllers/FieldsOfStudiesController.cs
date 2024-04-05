@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Students.Common.Data;
 using Students.Common.Models;
 using Students.Interfaces;
 

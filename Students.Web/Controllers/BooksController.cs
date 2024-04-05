@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Students.Common.Data;
 using Students.Common.Models;
 using Students.Interfaces;
 
@@ -14,6 +13,7 @@ namespace Students.Web.Controllers
         {
             _databaseService = databaseService;
         }
+
         // GET: Books
         public async Task<IActionResult> Index()
         {
@@ -74,7 +74,7 @@ namespace Students.Web.Controllers
             {
                 try
                 {
-                    book = await _databaseService.EditBook(id, book);   
+                    book = await _databaseService.EditBook(id, book);
                 }
                 catch (DbUpdateConcurrencyException)
                 {

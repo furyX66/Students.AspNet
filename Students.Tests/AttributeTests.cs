@@ -7,6 +7,7 @@ namespace Students.Tests
     public class AttributeTests
     {
         #region CapitalLettersFirstAttributeTests
+
         [Theory]
         [InlineData("ValidString")]
         [InlineData("Another Valid String")]
@@ -23,6 +24,7 @@ namespace Students.Tests
             // Assert
             Assert.Equal(ValidationResult.Success, result);
         }
+
         [Theory]
         [InlineData("invalidString")]
         [InlineData("123Invalid")]
@@ -40,8 +42,11 @@ namespace Students.Tests
             Assert.NotEqual(ValidationResult.Success, result);
             Assert.Equal("The field must start with capital letter and can't contain numbers or special symbols.", result.ErrorMessage);
         }
-        #endregion
+
+        #endregion CapitalLettersFirstAttributeTests
+
         #region NameSurnameAttributeTests
+
         [Theory]
         [InlineData("Szymon Kowalski")]
         [InlineData("John Smith")]
@@ -58,6 +63,7 @@ namespace Students.Tests
             // Assert
             Assert.Equal(ValidationResult.Success, result);
         }
+
         [Theory]
         [InlineData("Artem")]
         [InlineData("Ararat kochanowski")]
@@ -76,8 +82,11 @@ namespace Students.Tests
             Assert.NotEqual(ValidationResult.Success, result);
             Assert.Equal("The field must start with capital letter, must contain Name and Surname and only one space.", result.ErrorMessage);
         }
-        #endregion
+
+        #endregion NameSurnameAttributeTests
+
         #region PostalCodeAttribute
+
         [Theory]
         [InlineData("12-345")]
         [InlineData("99-999")]
@@ -114,7 +123,8 @@ namespace Students.Tests
 
             // Assert
             Assert.Equal("The field must be a valid Polish postal code (format: XX-XXX).", result.ErrorMessage);
-        } 
-        #endregion
+        }
+
+        #endregion PostalCodeAttribute
     }
 }

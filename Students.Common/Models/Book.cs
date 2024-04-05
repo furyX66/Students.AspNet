@@ -1,7 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using System.Security.Policy;
-
-namespace Students.Common.Models
+﻿namespace Students.Common.Models
 {
     public class Book
     {
@@ -11,8 +8,9 @@ namespace Students.Common.Models
         public string Description { get; set; } = string.Empty;
 
         public Book()
-        {               
+        {
         }
+
         public Book(string title, string author, string description)
         {
             Title = title;

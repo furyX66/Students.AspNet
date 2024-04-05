@@ -3,8 +3,6 @@ using Microsoft.Extensions.Logging;
 using Students.Common.Data;
 using Students.Common.Models;
 using Students.Interfaces;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace Students.Services;
 
@@ -38,7 +36,7 @@ public class DatabaseService : IDatabaseService
         newStudent.AvailableSubjects = listOfSubjects;
         newStudent.AvailableFieldOfStudies = listOfFields;
         return newStudent;
-    } 
+    }
     public async Task<Student> StudentDetails(int? id)
     {
         var student = await _context.Student
@@ -46,7 +44,7 @@ public class DatabaseService : IDatabaseService
           .Include(s => s.StudentSubjects)
               .ThenInclude(ss => ss.Subject)
               .FirstOrDefaultAsync(m => m.Id == id);
-        return student;
+        return student ?? throw new Exception("Student is null.");
     }
     public async Task<Student> Create(Student student, int[] subjectIdDst, int fieldIdDst)
     {
@@ -62,17 +60,16 @@ public class DatabaseService : IDatabaseService
                 .Where(f => f.Id != fieldIdDst)
                  .ToListAsync();
             var chosenFieldOfStudies = await _context.FieldOfStudies.FindAsync(fieldIdDst);
-                student.FieldOfStudyId = fieldIdDst;
+            student.FieldOfStudyId = fieldIdDst;
 
             student.AvailableSubjects = availableSubjects;
-            student.AvailableFieldOfStudies= availableFieldOfStudy;
+            student.AvailableFieldOfStudies = availableFieldOfStudy;
             student.FieldOfStudies = chosenFieldOfStudies;
 
             foreach (var chosenSubject in chosenSubjects)
             {
                 student.AddSubject(chosenSubject);
             }
-
             _context.Add(student);
             await _context.SaveChangesAsync();
         }
@@ -85,41 +82,48 @@ public class DatabaseService : IDatabaseService
     public async Task<Student> EditStudent(Student student, int[] subjectIdDst, int fieldIdDst)
     {
         var existingStudent = await _context.Student.FindAsync(student.Id);
-        if (existingStudent != null)
+        try
         {
-            existingStudent.Name = student.Name;
-            existingStudent.Age = student.Age;
-            existingStudent.Major = student.Major;
-            existingStudent.PostalCode = student.PostalCode;
-
-            var studentSubjects = await _context.StudentSubject
-                .Where(ss => ss.StudentId == student.Id)
-                .ToListAsync();
-            _context.StudentSubject.RemoveRange(studentSubjects);
-
-            var chosenSubjects = await _context.Subject
-                .Where(s => subjectIdDst.Contains(s.Id))
-                .ToListAsync();
-
-            var chosenFieldOfStudies = await _context.FieldOfStudies.FindAsync(fieldIdDst);
-            existingStudent.FieldOfStudies = chosenFieldOfStudies;
-
-            foreach (var subject in chosenSubjects)
+            if (existingStudent != null)
             {
-                var studentSubject = new StudentSubject
+                existingStudent.Name = student.Name;
+                existingStudent.Age = student.Age;
+                existingStudent.Major = student.Major;
+                existingStudent.PostalCode = student.PostalCode;
+
+                var studentSubjects = await _context.StudentSubject
+                    .Where(ss => ss.StudentId == student.Id)
+                    .ToListAsync();
+                _context.StudentSubject.RemoveRange(studentSubjects);
+
+                var chosenSubjects = await _context.Subject
+                    .Where(s => subjectIdDst.Contains(s.Id))
+                    .ToListAsync();
+
+                var chosenFieldOfStudies = await _context.FieldOfStudies.FindAsync(fieldIdDst);
+                existingStudent.FieldOfStudies = chosenFieldOfStudies;
+
+                foreach (var subject in chosenSubjects)
                 {
-                    Student = existingStudent,
-                    Subject = subject
-                };
-                _context.StudentSubject.Add(studentSubject);
+                    var studentSubject = new StudentSubject
+                    {
+                        Student = existingStudent,
+                        Subject = subject
+                    };
+                    _context.StudentSubject.Add(studentSubject);
+                }
+                await _context.SaveChangesAsync();
             }
-            await _context.SaveChangesAsync();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError("Exception caught: " + ex.Message);
         }
 
-        return existingStudent;
+        return existingStudent ?? throw new Exception("Student is null."); ;
     }
     public async Task<List<Student>> IndexStudents()
-    {        
+    {
         var students = await _context.Student.ToListAsync();
         foreach (var student in students)
         {
@@ -132,32 +136,25 @@ public class DatabaseService : IDatabaseService
         var student = await _context.Student.FindAsync(id);
         try
         {
-            if (id != null)
+            if (student != null)
             {
-                if (student != null)
-                {
-                    var chosenSubjects = _context.StudentSubject
-                        .Where(ss => ss.StudentId == id)
-                        .Select(ss => ss.Subject)
-                        .ToList();
-                    var availableSubjects = _context.Subject
-                        .Where(s => !chosenSubjects.Contains(s))
-                        .ToList();
-                    student.FieldOfStudies = await _context.FieldOfStudies.FindAsync(student.FieldOfStudyId);
-                    var availableFieldOfStudy = await _context.FieldOfStudies
-                        .Where(f => f.Id != student.FieldOfStudyId)
-                        .ToListAsync();
-                    student.StudentSubjects = _context.StudentSubject
-                        .Where(x => x.StudentId == id)
-                        .ToList();
-                    student.AvailableSubjects = availableSubjects;
-                    student.AvailableFieldOfStudies= availableFieldOfStudy;
-                    return student;
-                }
-                else
-                {
-                    throw new Exception("An error occured");
-                }
+                var chosenSubjects = _context.StudentSubject
+                    .Where(ss => ss.StudentId == id)
+                    .Select(ss => ss.Subject)
+                    .ToList();
+                var availableSubjects = _context.Subject
+                    .Where(s => !chosenSubjects.Contains(s))
+                    .ToList();
+                student.FieldOfStudies = await _context.FieldOfStudies.FindAsync(student.FieldOfStudyId);
+                var availableFieldOfStudy = await _context.FieldOfStudies
+                    .Where(f => f.Id != student.FieldOfStudyId)
+                    .ToListAsync();
+                student.StudentSubjects = _context.StudentSubject
+                    .Where(x => x.StudentId == id)
+                    .ToList();
+                student.AvailableSubjects = availableSubjects;
+                student.AvailableFieldOfStudies = availableFieldOfStudy;
+                return student;
             }
             else
             {
@@ -181,7 +178,7 @@ public class DatabaseService : IDatabaseService
             {
                 var studentSubjects = await _context.StudentSubject.Where(ss => ss.StudentId == id).Include(ss => ss.Subject).ToListAsync();
                 student.StudentSubjects = studentSubjects;
-                student.FieldOfStudies = await _context.FieldOfStudies.FindAsync (student.FieldOfStudyId);  
+                student.FieldOfStudies = await _context.FieldOfStudies.FindAsync(student.FieldOfStudyId);
             }
         }
         catch (Exception ex)
@@ -292,10 +289,10 @@ public class DatabaseService : IDatabaseService
         return fieldOfStudies;
     }
     public async Task<FieldOfStudies> DeleteFieldOfStudies(int? id)
-    {        
+    {
         var fieldOfStudies = await _context.FieldOfStudies
             .FirstOrDefaultAsync(m => m.Id == id);
-        return fieldOfStudies;
+        return fieldOfStudies ?? throw new Exception("Field Of Studies is null.");
     }
     public async Task<bool> FieldOfStudiesDeleteConfirm(int? id)
     {
@@ -303,7 +300,7 @@ public class DatabaseService : IDatabaseService
         var student = await _context.Student.FirstOrDefaultAsync(s => s.FieldOfStudyId == id);
         if (student != null)
         {
-            throw new Exception("Cannot delete Field of Studies because it is associated with a Student."); 
+            throw new Exception("Cannot delete Field of Studies because it is associated with a Student.");
         }
         else
         {
@@ -332,7 +329,7 @@ public class DatabaseService : IDatabaseService
     public async Task<Book> DetailsBook(int? id)
     {
         var book = await _context.Book
-    .FirstOrDefaultAsync(m => m.Id == id);
+        .FirstOrDefaultAsync(m => m.Id == id);
         return book ?? throw new Exception("An error occured");
     }
     public async Task<Book> CreateBook(Book book)
@@ -427,8 +424,8 @@ public class DatabaseService : IDatabaseService
     {
         var result = _context.LectureHall.Any(e => e.Id == id);
         return result;
-    } 
+    }
     #endregion
 }
-    #endregion // Public Methods
+#endregion // Public Methods
 

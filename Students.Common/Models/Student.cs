@@ -2,7 +2,6 @@ using Students.Common.Attributes;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-
 namespace Students.Common.Models;
 
 public class Student
@@ -21,14 +20,17 @@ public class Student
     [Required]
     [StringLength(100)]
     public string Major { get; set; } = string.Empty;
+
     [PostalCode]
-    public string PostalCode {  get; set; } = string.Empty;
+    public string PostalCode { get; set; } = string.Empty;
+
     public FieldOfStudies? FieldOfStudies { get; set; }
 
     public ICollection<StudentSubject> StudentSubjects { get; set; } = new List<StudentSubject>();
 
     [NotMapped]
     public List<Subject> AvailableSubjects { get; set; } = new List<Subject>();
+
     [NotMapped]
     public List<FieldOfStudies> AvailableFieldOfStudies { get; set; } = new List<FieldOfStudies>();
 
@@ -53,6 +55,7 @@ public class Student
         };
         StudentSubjects.Add(studentSubject);
     }
+
     public void AddFieldOfStudy(FieldOfStudies fieldOfStudies)
     {
         FieldOfStudies = fieldOfStudies;

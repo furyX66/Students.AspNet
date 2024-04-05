@@ -1,6 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Students.Common.Data;
 using Students.Common.Models;
 using Students.Interfaces;
 
@@ -91,7 +89,7 @@ public class StudentsController : Controller
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create([Bind("Id, Name, Age, Major, PostalCode")] Student student, int[] subjectIdDst, int fieldIdDst)
-    {      
+    {
         if (ModelState.IsValid)
         {
             student = await _databaseService.Create(student, subjectIdDst, fieldIdDst);
