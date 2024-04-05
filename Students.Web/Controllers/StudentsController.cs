@@ -32,7 +32,7 @@ public class StudentsController : Controller
         IActionResult result = View();
         try
         {
-            var model = await _databaseService.IndexStudents();
+            var model = await _databaseService.IndexStudent();
             result = View(model);
         }
         catch (Exception ex)
@@ -52,7 +52,7 @@ public class StudentsController : Controller
         {
             if (id != null)
             {
-                var student = await _databaseService.StudentDetails(id);
+                var student = await _databaseService.DetailsStudent(id);
                 if (student != null)
                 {
                     result = View(student);
@@ -92,7 +92,7 @@ public class StudentsController : Controller
     {
         if (ModelState.IsValid)
         {
-            student = await _databaseService.Create(student, subjectIdDst, fieldIdDst);
+            student = await _databaseService.CreateStudent(student, subjectIdDst, fieldIdDst);
             return RedirectToAction(nameof(Index));
         }
         return Create();
@@ -143,7 +143,7 @@ public class StudentsController : Controller
             }
             else
             {
-                var student = await _databaseService.DisplayStudent(id);
+                var student = await _databaseService.DeleteStudent(id);
                 if (student == null)
                 {
                     result = NotFound();
@@ -170,7 +170,7 @@ public class StudentsController : Controller
         IActionResult result = View();
         try
         {
-            var student = await _databaseService.StudentDeleteConfirm(id);
+            var student = await _databaseService.StudentDeleteConfirmed(id);
             result = RedirectToAction(nameof(Index));
         }
         catch (Exception ex)

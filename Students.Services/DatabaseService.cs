@@ -26,6 +26,24 @@ public class DatabaseService : IDatabaseService
     #region Public Methods
 
     #region StudentMethods
+    public async Task<List<Student>> IndexStudent()
+    {
+        var students = await _context.Student.ToListAsync();
+        foreach (var student in students)
+        {
+            student.FieldOfStudies = await _context.FieldOfStudies.FindAsync(student.FieldOfStudyId);
+        }
+        return students;
+    }
+    public async Task<Student> DetailsStudent(int? id)
+    {
+        var student = await _context.Student
+          .Include(s => s.FieldOfStudies)
+          .Include(s => s.StudentSubjects)
+              .ThenInclude(ss => ss.Subject)
+              .FirstOrDefaultAsync(m => m.Id == id);
+        return student ?? throw new Exception("Student is null.");
+    }
     public Student CreateStudent()
     {
         var listOfSubjects = _context.Subject
@@ -37,16 +55,7 @@ public class DatabaseService : IDatabaseService
         newStudent.AvailableFieldOfStudies = listOfFields;
         return newStudent;
     }
-    public async Task<Student> StudentDetails(int? id)
-    {
-        var student = await _context.Student
-          .Include(s => s.FieldOfStudies)
-          .Include(s => s.StudentSubjects)
-              .ThenInclude(ss => ss.Subject)
-              .FirstOrDefaultAsync(m => m.Id == id);
-        return student ?? throw new Exception("Student is null.");
-    }
-    public async Task<Student> Create(Student student, int[] subjectIdDst, int fieldIdDst)
+    public async Task<Student> CreateStudent(Student student, int[] subjectIdDst, int fieldIdDst)
     {
         try
         {
@@ -122,15 +131,6 @@ public class DatabaseService : IDatabaseService
 
         return existingStudent ?? throw new Exception("Student is null."); ;
     }
-    public async Task<List<Student>> IndexStudents()
-    {
-        var students = await _context.Student.ToListAsync();
-        foreach (var student in students)
-        {
-            student.FieldOfStudies = await _context.FieldOfStudies.FindAsync(student.FieldOfStudyId);
-        }
-        return students;
-    }
     public async Task<Student> EditStudent(int? id)
     {
         var student = await _context.Student.FindAsync(id);
@@ -167,7 +167,7 @@ public class DatabaseService : IDatabaseService
             throw new Exception("An error occured");
         }
     }
-    public async Task<Student> DisplayStudent(int? id)
+    public async Task<Student> DeleteStudent(int? id)
     {
         Student? student = null;
         try
@@ -188,7 +188,7 @@ public class DatabaseService : IDatabaseService
 
         return student ?? throw new Exception("An error occured");
     }
-    public async Task<bool> StudentDeleteConfirm(int id)
+    public async Task<bool> StudentDeleteConfirmed(int id)
     {
         var result = false;
         var student = await _context.Student.FindAsync(id);
@@ -218,6 +218,12 @@ public class DatabaseService : IDatabaseService
     .FirstOrDefaultAsync(m => m.Id == id);
         return subject ?? throw new Exception("An error occured");
     }
+    public async Task<Subject> CreateSubject(Subject subject)
+    {
+        _context.Add(subject);
+        await _context.SaveChangesAsync();
+        return subject;
+    }
     public async Task<Subject> EditSubject(int? id)
     {
         var subject = await _context.Subject.FindAsync(id);
@@ -235,7 +241,7 @@ public class DatabaseService : IDatabaseService
             .FirstOrDefaultAsync(m => m.Id == id);
         return subject ?? throw new Exception("An error occured during removing subject");
     }
-    public async Task<bool> SubjectDeleteConfirm(int? id)
+    public async Task<bool> SubjectDeleteConfirmed(int? id)
     {
         var result = false;
         var subject = await _context.Subject.FindAsync(id);
@@ -251,12 +257,6 @@ public class DatabaseService : IDatabaseService
     {
         var result = _context.Subject.Any(e => e.Id == id);
         return result;
-    }
-    public async Task<Subject> CreateSubject(Subject subject)
-    {
-        _context.Add(subject);
-        await _context.SaveChangesAsync();
-        return subject;
     }
     #endregion
     #region FieldOfStudiesMethods

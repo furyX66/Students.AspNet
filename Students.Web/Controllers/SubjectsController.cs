@@ -136,7 +136,7 @@ public class SubjectsController : Controller
         IActionResult result = View();
         try
         {
-            var subject = await _databaseService.SubjectDeleteConfirm(id);
+            var subject = await _databaseService.SubjectDeleteConfirmed(id);
             result = RedirectToAction(nameof(Index));
         }
         catch (Exception ex)
