@@ -6,7 +6,7 @@ namespace Students.Interfaces;
 
 public interface IDatabaseService
 {
-    Task<Student> CreateStudent(Student student, int[] subjectIdDst, int fieldIdDst);
+    Task<Student> Create(Student student, int[] subjectIdDst, int fieldIdDst);
     Task<Student> EditStudent(Student student, int[] subjectIdDst, int fieldIdDst);
     Task<Student> DisplayStudent(int? id);
 
@@ -44,7 +44,6 @@ public interface IDatabaseService
     Task<FieldOfStudies> DeleteFieldOfStudies(int? id);
     Task<bool> FieldOfStudiesDeleteConfirm(int? id);
     bool CheckFieldOfStudiesExist(int? id);
-    Task<List<Student>> IndexStudent();
     Task<List<Subject>> IndexSubject();
     Task<List<Book>> IndexBook();
     Task<Book> DetailsBook(int? id);

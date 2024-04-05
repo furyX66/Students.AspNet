@@ -94,7 +94,7 @@ public class StudentsController : Controller
     {      
         if (ModelState.IsValid)
         {
-            student = await _databaseService.CreateStudent(student, subjectIdDst, fieldIdDst);
+            student = await _databaseService.Create(student, subjectIdDst, fieldIdDst);
             return RedirectToAction(nameof(Index));
         }
         return Create();

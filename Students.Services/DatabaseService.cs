@@ -48,7 +48,7 @@ public class DatabaseService : IDatabaseService
               .FirstOrDefaultAsync(m => m.Id == id);
         return student;
     }
-    public async Task<Student> CreateStudent(Student student, int[] subjectIdDst, int fieldIdDst)
+    public async Task<Student> Create(Student student, int[] subjectIdDst, int fieldIdDst)
     {
         try
         {
@@ -118,10 +118,14 @@ public class DatabaseService : IDatabaseService
 
         return existingStudent;
     }
-    public async Task<List<Student>> IndexStudent()
-    {
-        var result = await _context.Student.ToListAsync();
-        return result;
+    public async Task<List<Student>> IndexStudents()
+    {        
+        var students = await _context.Student.ToListAsync();
+        foreach (var student in students)
+        {
+            student.FieldOfStudies = await _context.FieldOfStudies.FindAsync(student.FieldOfStudyId);
+        }
+        return students;
     }
     public async Task<Student> EditStudent(int? id)
     {
@@ -186,11 +190,6 @@ public class DatabaseService : IDatabaseService
         }
 
         return student ?? throw new Exception("An error occured");
-    }
-    public async Task<List<Student>> IndexStudents()
-    {
-        var model = await _context.Student.ToListAsync();
-        return model;
     }
     public async Task<bool> StudentDeleteConfirm(int id)
     {
