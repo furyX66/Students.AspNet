@@ -97,7 +97,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Dostępne dziedziny nauki.
+        ///   Looks up a localized string similar to Dostępne kierunki studiów.
         /// </summary>
         public static string AvFieldsOfStudies {
             get {
@@ -259,7 +259,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Dziedzina nauki.
+        ///   Looks up a localized string similar to Kierunek Studiów.
         /// </summary>
         public static string FieldOfStudies {
             get {
@@ -268,7 +268,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Dziedziny nauki.
+        ///   Looks up a localized string similar to Kierunki studiów.
         /// </summary>
         public static string FieldsOfStudies {
             get {
@@ -376,7 +376,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Kierunek studiów.
+        ///   Looks up a localized string similar to Główny przedmiot.
         /// </summary>
         public static string Major {
             get {

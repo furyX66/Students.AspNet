@@ -376,7 +376,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 専攻.
+        ///   Looks up a localized string similar to 主題.
         /// </summary>
         public static string Major {
             get {

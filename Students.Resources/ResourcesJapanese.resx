@@ -223,7 +223,7 @@
     <value>講義ホール</value>
   </data>
   <data name="Major" xml:space="preserve">
-    <value>専攻</value>
+    <value>主題</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>名前</value>

@@ -130,7 +130,7 @@
     <value>Dostępne książki</value>
   </data>
   <data name="AvFieldsOfStudies" xml:space="preserve">
-    <value>Dostępne dziedziny nauki</value>
+    <value>Dostępne kierunki studiów</value>
   </data>
   <data name="AvHalls" xml:space="preserve">
     <value>Dostępne sale</value>
@@ -184,10 +184,10 @@
     <value>Angielski (US)</value>
   </data>
   <data name="FieldOfStudies" xml:space="preserve">
-    <value>Dziedzina nauki</value>
+    <value>Kierunek Studiów</value>
   </data>
   <data name="FieldsOfStudies" xml:space="preserve">
-    <value>Dziedziny nauki</value>
+    <value>Kierunki studiów</value>
   </data>
   <data name="Floor" xml:space="preserve">
     <value>Piętro</value>
@@ -223,7 +223,7 @@
     <value>Aule</value>
   </data>
   <data name="Major" xml:space="preserve">
-    <value>Kierunek studiów</value>
+    <value>Główny przedmiot</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>Imię</value>

@@ -24,7 +24,6 @@ public class DatabaseService : IDatabaseService
     #endregion // Ctor and Properties
 
     #region Public Methods
-
     #region StudentMethods
     public async Task<List<Student>> IndexStudent()
     {
