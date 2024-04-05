@@ -16,7 +16,7 @@
     <table>
         <thead>
         <th>@sharedResourcesService.GetString("AvailableSubjects", cultureInfo)</th>
-        <th>@sharedResourcesService.GetString("Operations", cultureInfo)</th>
+        <th></th>
         <th>@sharedResourcesService.GetString("ChoosenSubjects", cultureInfo)</th>
         </thead>
         <tbody>
@@ -39,8 +39,8 @@
                     </select>
                 </td>
                 <td>
-                    <button type="button" style="width: 200px;" name="moveright" onclick="moveRight()">==></button>
-                    <button type="button" style="width: 200px;" name="moveleft" onclick="moveLeft()"><==</button>
+                    <button type="button" class="btn btn-outline-info"  name="moveright" onclick="moveRight()">></button>
+                    <button type="button" class="btn btn-outline-info" name="moveleft" onclick="moveLeft()"><</button>
                 </td>
                 <td>
                     <select style="width: 300px;"
