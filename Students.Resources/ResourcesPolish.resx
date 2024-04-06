@@ -228,6 +228,9 @@
   <data name="Name" xml:space="preserve">
     <value>Imię</value>
   </data>
+  <data name="NS" xml:space="preserve">
+    <value>Imię i nazwisko</value>
+  </data>
   <data name="Operations" xml:space="preserve">
     <value>Operacje</value>
   </data>
@@ -236,6 +239,9 @@
   </data>
   <data name="PostalCode" xml:space="preserve">
     <value>Kod pocztowy</value>
+  </data>
+  <data name="PostalCodeFormat" xml:space="preserve">
+    <value>Kod pocztowy w formacie XX-XXX</value>
   </data>
   <data name="Privacy" xml:space="preserve">
     <value>Prywatność</value>

@@ -228,6 +228,9 @@
   <data name="Name" xml:space="preserve">
     <value>名前</value>
   </data>
+  <data name="NS" xml:space="preserve">
+    <value>名称</value>
+  </data>
   <data name="Operations" xml:space="preserve">
     <value>操作</value>
   </data>
@@ -236,6 +239,9 @@
   </data>
   <data name="PostalCode" xml:space="preserve">
     <value>郵便番号</value>
+  </data>
+  <data name="PostalCodeFormat" xml:space="preserve">
+    <value>郵便番号XX-XXX形式</value>
   </data>
   <data name="Privacy" xml:space="preserve">
     <value>プライバシー</value>

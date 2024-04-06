@@ -19,17 +19,17 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Title" class="control-label">@sharedResourcesService.GetString("Title", cultureInfo)</label>
-                <input asp-for="Title" class="form-control" />
+                <input asp-for="Title" placeholder="@sharedResourcesService.GetString("Title", cultureInfo)" class="form-control" />
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Author" class="control-label">@sharedResourcesService.GetString("Author", cultureInfo)</label>
-                <input asp-for="Author" class="form-control" />
+                <input asp-for="Author" placeholder="@sharedResourcesService.GetString("Author", cultureInfo)" class="form-control" />
                 <span asp-validation-for="Author" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Description" class="control-label">@sharedResourcesService.GetString("Description", cultureInfo)</label>
-                <input asp-for="Description" class="form-control" />
+                <input asp-for="Description" placeholder="@sharedResourcesService.GetString("Description", cultureInfo)" class="form-control" />
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">

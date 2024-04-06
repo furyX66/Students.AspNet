@@ -19,12 +19,12 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="HallNumber" class="control-label">@sharedResourcesService.GetString("HallNumber", cultureInfo)</label>
-                <input asp-for="HallNumber" class="form-control" />
+                <input asp-for="HallNumber" placeholder="@sharedResourcesService.GetString("HallNumber", cultureInfo)" class="form-control" />
                 <span asp-validation-for="HallNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Floor" class="control-label">@sharedResourcesService.GetString("Floor", cultureInfo)</label>
-                <input asp-for="Floor" class="form-control" />
+                <input asp-for="Floor" placeholder="@sharedResourcesService.GetString("Floor", cultureInfo)" class="form-control" min="0" max="4" />
                 <span asp-validation-for="Floor" class="text-danger"></span>
             </div>
             <div class="form-group">

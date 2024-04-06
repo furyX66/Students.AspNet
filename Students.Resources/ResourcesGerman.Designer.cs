@@ -394,6 +394,15 @@ namespace Students.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Vorname und Nachname.
+        /// </summary>
+        public static string NS {
+            get {
+                return ResourceManager.GetString("NS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Operationen.
         /// </summary>
         public static string Operations {
@@ -417,6 +426,15 @@ namespace Students.Resources {
         public static string PostalCode {
             get {
                 return ResourceManager.GetString("PostalCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ihre Postleitzahl im Format XX-XXX.
+        /// </summary>
+        public static string PostalCodeFormat {
+            get {
+                return ResourceManager.GetString("PostalCodeFormat", resourceCulture);
             }
         }
         
