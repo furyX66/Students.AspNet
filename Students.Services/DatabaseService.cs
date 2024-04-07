@@ -189,14 +189,13 @@ public class DatabaseService : IDatabaseService
     }
     public async Task<bool> StudentDeleteConfirmed(int id)
     {
-        var result = false;
         var student = await _context.Student.FindAsync(id);
         if (student != null)
         {
             _context.Student.Remove(student);
         }
         var resultChecker = await _context.SaveChangesAsync();
-        result = resultChecker > 0;
+        var result = resultChecker > 0;
         return result;
     }
     public bool CheckStudentExist(int? id)
