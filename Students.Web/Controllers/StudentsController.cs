@@ -123,12 +123,14 @@ public class StudentsController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit([Bind("Id, Name, Age, Major, PostalCode")] Student student, int[] subjectIdDst, int fieldIdDst)
     {
+        IActionResult result = View();
         if (ModelState.IsValid)
         {
             student = await _databaseService.EditStudent(student, subjectIdDst, fieldIdDst);
             return RedirectToAction(nameof(Index));
         }
-        return Create();
+        student = await _databaseService.EditStudent(student.Id);
+        return View(student);
     }
 
     // GET: Students/Delete/5

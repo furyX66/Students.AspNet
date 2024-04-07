@@ -20,22 +20,22 @@
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
                 <label asp-for="Name" class="control-label">@sharedResourcesService.GetString("Name", cultureInfo)</label>
-                <input asp-for="Name" class="form-control" />
+                <input asp-for="Name" placeholder="@sharedResourcesService.GetString("NS", cultureInfo)" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Age" class="control-label">@sharedResourcesService.GetString("Age", cultureInfo)</label>
-                <input asp-for="Age" class="form-control" />
+                <input asp-for="Age" placeholder="@sharedResourcesService.GetString("Age", cultureInfo)" class="form-control" />
                 <span asp-validation-for="Age" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Major" class="control-label">@sharedResourcesService.GetString("Major", cultureInfo)</label>
-                <input asp-for="Major" class="form-control" />
+                <input asp-for="Major" placeholder="@sharedResourcesService.GetString("Major", cultureInfo)" class="form-control" />
                 <span asp-validation-for="Major" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="PostalCode" class="control-label">@sharedResourcesService.GetString("PostalCode", cultureInfo)</label>
-                <input asp-for="PostalCode" class="form-control" />
+                <input asp-for="PostalCode" placeholder="@sharedResourcesService.GetString("PostalCodeFormat", cultureInfo)" class="form-control" />
                 <span asp-validation-for="PostalCode" class="text-danger"></span>
             </div>
             <div class="form-group">
