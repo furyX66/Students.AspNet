@@ -34,7 +34,7 @@ public class StudentsContext : DbContext
 
         modelBuilder.Entity<Student>()
             .HasOne(s => s.FieldOfStudies)
-            .WithMany()
+            .WithMany(fs => fs.Students)
             .HasForeignKey(s => s.FieldOfStudyId);
     }
 }
