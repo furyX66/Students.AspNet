@@ -43,12 +43,12 @@ public class DatabaseService : IDatabaseService
               .FirstOrDefaultAsync(m => m.Id == id);
         return student ?? throw new Exception("Student is null.");
     }
-    public Student CreateStudent()
+    public async Task<Student> CreateStudent()
     {
-        var listOfSubjects = _context.Subject
-                .ToList();
-        var listOfFields = _context.FieldOfStudies
-                .ToList();
+        var listOfSubjects = await _context.Subject
+                .ToListAsync();
+        var listOfFields = await _context.FieldOfStudies
+                .ToListAsync();
         var newStudent = new Student();
         newStudent.AvailableSubjects = listOfSubjects;
         newStudent.AvailableFieldOfStudies = listOfFields;
@@ -128,7 +128,7 @@ public class DatabaseService : IDatabaseService
             _logger.LogError("Exception caught: " + ex.Message);
         }
 
-        return existingStudent ?? throw new Exception("Student is null."); ;
+        return existingStudent ?? throw new Exception("Student is null.");
     }
     public async Task<Student> EditStudent(int? id)
     {

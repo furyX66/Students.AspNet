@@ -67,12 +67,12 @@ public class StudentsController : Controller
     }
 
     // GET: Students/Create
-    public IActionResult Create()
+    public async Task<IActionResult> Create()
     {
         IActionResult result = View();
         try
         {
-            var newStudent = _databaseService.CreateStudent();
+            var newStudent = await _databaseService.CreateStudent();
             result = View(newStudent);
         }
         catch (Exception ex)
@@ -90,13 +90,13 @@ public class StudentsController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create([Bind("Id, Name, Age, Major, PostalCode")] Student student, int[] subjectIdDst, int fieldIdDst)
     {
-        IActionResult result = Create();
+        var result = await _databaseService.CreateStudent();
         if (ModelState.IsValid)
         {
             student = await _databaseService.CreateStudent(student, subjectIdDst, fieldIdDst);
-            result = RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Index));
         }
-        return result;
+        return View(result);
     }
 
     // GET: Students/Edit/5

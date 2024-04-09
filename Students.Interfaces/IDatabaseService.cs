@@ -7,7 +7,7 @@ public interface IDatabaseService
     #region StudentMethods
     Task<List<Student>> IndexStudent();
     Task<Student> DetailsStudent(int? id);
-    Student CreateStudent();
+    Task<Student> CreateStudent();
     Task<Student> CreateStudent(Student student, int[] subjectIdDst, int fieldIdDst);
     Task<Student> EditStudent(Student student, int[] subjectIdDst, int fieldIdDst);
     Task<Student> EditStudent(int? id);
