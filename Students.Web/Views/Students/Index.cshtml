@@ -48,7 +48,10 @@
                     @Html.DisplayFor(modelItem => item.Major)
                 </td>
                 <td>
+                    @if (item.FieldOfStudies != null)
+                    {
                     @Html.DisplayFor(modelItem => item.FieldOfStudies.Name)
+                    }
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">@sharedResourcesService.GetString("Edit", cultureInfo)</a> |

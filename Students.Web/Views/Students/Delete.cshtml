@@ -45,6 +45,17 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.FieldOfStudies.Name)
         </dd>
+        <dt class="col-sm-2">
+            @sharedResourcesService.GetString("Subjects", cultureInfo)
+        </dt>
+        <dd class="col-sm-10">
+            <ul>
+                @foreach (var studentSubject in Model.StudentSubjects)
+                {
+                    <li>@studentSubject.Subject.Name</li>
+                }
+            </ul>
+        </dd>
     </dl>
     
     <form asp-action="Delete">
